@@ -12,4 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a3623ef65f7847129d69acc8360e309b, type: 3}
   m_Name: PrefabsBase
   m_EditorClassIdentifier: 
-  prefabs: []
+  prefabs:
+  - Name: Ant
+    GameObject: {fileID: 8820758294466223085, guid: bfbdc514e3f4d8149936053820a910dc, type: 3}
+  - Name: Warehouse
+    GameObject: {fileID: 5298061214108603291, guid: 2816acd106338684fb7556798e58752b, type: 3}
+  - Name: Exit
+    GameObject: {fileID: 6053897246803577485, guid: dfffba9cbeb0ebc478949f57352d7284, type: 3}

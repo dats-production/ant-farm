@@ -29,7 +29,7 @@ namespace Game.Utils.MonoBehUtils
         public Vector3 GetRandomPointWithSaveArea()
         {
             Vector3 position;
-            bool isInSaveArea;
+            //bool isInSaveArea;
 
             do
             {

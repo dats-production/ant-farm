@@ -47,7 +47,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 89715ad69b973a14899afa2c6730b30b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _scriptableObjectInstallers: []
+  _scriptableObjectInstallers:
+  - {fileID: 11400000, guid: e5dc7fda9a8f9e84e808be7ebff1656f, type: 2}
   _monoInstallers:
   - {fileID: 1310817103208770388}
   - {fileID: 4121605232132141014}
@@ -80,7 +81,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ba1a07c8f8e49b994c3127c5203ceb6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  getPointFromScene: {fileID: 7305691077544587321}
 --- !u!114 &4121605232132141014
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -93,6 +93,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 42f1fdf4ef18f954d816b9d078f71735, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  getPointFromScene: {fileID: 7305691077544587321}
 --- !u!114 &7305691077544587321
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -107,4 +108,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _quadArea: {fileID: 0}
   _saveArea: {fileID: 0}
-  points: []
+  points:
+  - Transform: {fileID: 0}
+    Key: Wirehouse
+  - Transform: {fileID: 0}
+    Key: Exit

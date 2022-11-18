@@ -11,7 +11,7 @@ namespace Installers
 {
     public class GameInstaller : MonoInstaller
     {
-        [SerializeField] private GetPointFromScene getPointFromScene;
+        
         //[SerializeField] private PlayerInputModule playerInputModule;
         //[SerializeField] private PrefabsBase prefabBase;
         
@@ -22,7 +22,6 @@ namespace Installers
 
         private void BindModules()
         {
-            Container.Bind<GetPointFromScene>().FromInstance(getPointFromScene).AsSingle();
         }
         
         

@@ -1,9 +1,12 @@
 ﻿using DataBase.Game;
+using ECS.Components.Flags;
 using ECS.DataSave;
 using ECS.Game.Components;
 using ECS.Utils.Extensions;
+using Game.Utils.MonoBehUtils;
 using Leopotam.Ecs;
 using Services.Uid;
+using UnityEngine;
 using Zenject;
 
 namespace ECS.Game.Systems
@@ -11,15 +14,47 @@ namespace ECS.Game.Systems
     public class GameInitializeSystem : IEcsInitSystem
     {
         //[Inject] private readonly IGameStateService<GameState> _generalState;
+        [Inject] private readonly GetPointFromScene _getPointFromScene;
         
         private readonly EcsWorld _world;
         public void Init()
         {
             if (LoadGame()) return;
-            CreateCamera();
+            //CreateCamera();
             CreateTimer();
-
+            CreateAnt();
+            CreateWarehouse();
+            CreateExit();
         }
+
+        private void CreateAnt()
+        {
+            var entity = _world.NewEntity();
+            entity.Get<AntComponent>();
+            entity.Get<UIdComponent>().Value = UidGenerator.Next();
+            entity.GetAndFire<PrefabComponent>().Value = "Ant";
+        }
+        
+        private void CreateWarehouse()
+        {
+            var entity = _world.NewEntity();
+            entity.Get<WarehouseComponent>();
+            entity.Get<UIdComponent>().Value = UidGenerator.Next();
+            entity.GetAndFire<PrefabComponent>().Value = "Warehouse";
+            var point = _getPointFromScene.GetPoint("Warehouse");
+            entity.Get<PositionComponent>().Value = point.position;
+        }
+        
+        private void CreateExit()
+        {
+            var entity = _world.NewEntity();
+            entity.Get<ExitComponent>();
+            entity.Get<UIdComponent>().Value = UidGenerator.Next();
+            entity.GetAndFire<PrefabComponent>().Value = "Exit";
+            var point = _getPointFromScene.GetPoint("Exit");
+            entity.Get<PositionComponent>().Value = point.position;
+        }
+
         private bool LoadGame()
         {
             _world.NewEntity().Get<GameStageComponent>().Value = EGameStage.Pause;
@@ -30,7 +65,8 @@ namespace ECS.Game.Systems
             //     var entity =_world.NewEntity();
             //     state.ReadState(entity);
             // }
-            return true;
+            //return true;
+            return false;
         }
 
         private void CreateTimer()
