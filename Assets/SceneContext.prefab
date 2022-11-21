@@ -13,6 +13,8 @@ GameObject:
   - component: {fileID: 1310817103208770388}
   - component: {fileID: 4121605232132141014}
   - component: {fileID: 7305691077544587321}
+  - component: {fileID: 5173217833134797874}
+  - component: {fileID: 4342502148964331238}
   m_Layer: 0
   m_Name: SceneContext
   m_TagString: Untagged
@@ -49,9 +51,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _scriptableObjectInstallers:
   - {fileID: 11400000, guid: e5dc7fda9a8f9e84e808be7ebff1656f, type: 2}
+  - {fileID: 11400000, guid: 3f168a563b2ddd4409934c5521011f90, type: 2}
   _monoInstallers:
   - {fileID: 1310817103208770388}
   - {fileID: 4121605232132141014}
+  - {fileID: 5173217833134797874}
+  - {fileID: 4342502148964331238}
   _installerPrefabs: []
   _autoRun: 1
   OnPreInstall:
@@ -110,6 +115,31 @@ MonoBehaviour:
   _saveArea: {fileID: 0}
   points:
   - Transform: {fileID: 0}
-    Key: Wirehouse
+    Key: Warehouse
   - Transform: {fileID: 0}
     Key: Exit
+--- !u!114 &5173217833134797874
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4776110520569494985}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 82e15fb8dd3e4162ae02953e65ee03ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  windowLayer: 0
+--- !u!114 &4342502148964331238
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4776110520569494985}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d19302416b4b4649a51151febbe542d0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

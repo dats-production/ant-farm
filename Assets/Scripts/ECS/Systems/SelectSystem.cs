@@ -1,25 +1,39 @@
-﻿using System;
-using ECS.Components.Flags;
+﻿using ECS.Components.Flags;
 using ECS.Core.Utils.ReactiveSystem;
-using ECS.Game.Components;
-using ECS.Views;
 using Leopotam.Ecs;
-using UnityEngine;
+using Scripts.UI.Gather;
+using Scripts.UI.Warehouse;
+using Signals;
+using SimpleUi.Signals;
+using Zenject;
 
 namespace ECS.Game.Systems
 {
-    public class SelectSystem : ReactiveSystem<SelectComponent>
+    public class SelectSystem : ReactiveSystem<SelectableComponent>
     {
-        protected override EcsFilter<SelectComponent> ReactiveFilter { get; }
+        [Inject] private SignalBus _signalBus;
+        protected override EcsFilter<SelectableComponent> ReactiveFilter { get; }
         protected override void Execute(EcsEntity entity)
         {
-            var view = entity.Get<SelectComponent>().View;
-            view.SetMouseDownAction(OnMouseDown);
+            var view = entity.Get<SelectableComponent>().View;
+            view.SetMouseDownAction(entity, OnMouseDown);
         }
 
-        private void OnMouseDown()
+        private void OnMouseDown(EcsEntity selectedEntity)
         {
-            Debug.Log(111);
+            if(selectedEntity.Has<ExitComponent>())
+            {
+                _signalBus.OpenWindow<GatherWindow>();
+                _signalBus.Fire(new SignalSelect(selectedEntity, OnGather));
+            }
+            else if (selectedEntity.Has<WarehouseComponent>())
+            {
+                _signalBus.OpenWindow<WarehouseWindow>();
+            }
+        }        
+        private void OnGather(EcsEntity entity)
+        {
+            entity.Get<GatherComponent>();
         }
     }
 }

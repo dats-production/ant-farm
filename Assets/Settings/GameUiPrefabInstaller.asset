@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 65ff7b7ba25f41b1ae2e17f0883c8dce, type: 3}
+  m_Name: GameUiPrefabInstaller
+  m_EditorClassIdentifier: 
+  canvas: {fileID: 5136967472970757021, guid: b439f6089f29f4849b61b058c4065b72, type: 3}
+  inGameMenu: {fileID: 5853862076662972053, guid: a69b21ad65142074cba89289139b9ae4, type: 3}
+  gatherView: {fileID: 5309234521766047622, guid: c1906ea084e8fac48b82e6270a0993ea, type: 3}
+  warehouseView: {fileID: 8451076759091314275, guid: 5e6985fe92f7deb4f9f7d5c25e0365e6, type: 3}

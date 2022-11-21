@@ -2,6 +2,7 @@
 using ECS.Game.Systems;
 using ECS.Game.Systems.GameDay;
 using ECS.Game.Systems.Linked;
+using ECS.Systems;
 using Game.Utils.MonoBehUtils;
 using Leopotam.Ecs;
 using UnityEngine;
@@ -34,6 +35,7 @@ namespace Installers
             
             Container.BindInterfacesAndSelfTo<AntMoveSystem>().AsSingle();
             Container.BindInterfacesAndSelfTo<SelectSystem>().AsSingle();
+            Container.BindInterfacesAndSelfTo<GatherSystem>().AsSingle();
 
             Container.BindInterfacesAndSelfTo<GameStageSystem>().AsSingle();        //always must been last
             Container.BindInterfacesAndSelfTo<CleanUpSystem>().AsSingle();          //must been latest than last!

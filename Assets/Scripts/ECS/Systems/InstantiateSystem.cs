@@ -22,7 +22,7 @@ namespace ECS.Game.Systems
             entity.Get<LinkComponent>().View = linkable;
 
             if (linkable is not ISelectable selectableView) return;
-            entity.GetAndFire<SelectComponent>().View = selectableView;
+            entity.GetAndFire<SelectableComponent>().View = selectableView;
         }
     }
 }
