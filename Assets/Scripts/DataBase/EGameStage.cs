@@ -1,4 +1,4 @@
-﻿namespace DataBase.Game
+﻿namespace DataBase
 {
     public enum EGameStage
     {

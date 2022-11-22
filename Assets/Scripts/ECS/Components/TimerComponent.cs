@@ -1,7 +1,6 @@
-﻿using DataBase.Timer;
-using UnityEngine;
+﻿using DataBase;
 
-namespace ECS.Game.Components
+namespace ECS.Components
 {
     public struct TimerComponent
     {

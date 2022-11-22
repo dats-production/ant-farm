@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace DataBase.Timer
+namespace DataBase
 {
     [Serializable]
     public struct Timer

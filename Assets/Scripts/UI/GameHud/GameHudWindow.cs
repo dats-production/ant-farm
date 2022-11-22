@@ -1,7 +1,6 @@
 using SimpleUi;
-using UI.GameHud;
 
-namespace Scripts.UI.GameHud 
+namespace UI.GameHud 
 {
     public class GameHudWindow : WindowBase 
     {

@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace DataBase.Objects
+namespace DataBase
 {
     public interface IPrefabsBase
     {

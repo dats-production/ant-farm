@@ -1,16 +1,17 @@
-﻿using ECS.Components.Flags;
+﻿using ECS.Components.Events;
+using ECS.Components.Flags;
 using ECS.Components.Link;
 using ECS.Core.Utils.ReactiveSystem;
 using ECS.Core.Utils.ReactiveSystem.Components;
 using ECS.Utils.Extensions;
 using Leopotam.Ecs;
-using Scripts.UI.Gather;
-using Scripts.UI.Warehouse;
 using Signals;
 using SimpleUi.Signals;
+using UI.Gather;
+using UI.Warehouse;
 using Zenject;
 
-namespace ECS.Game.Systems
+namespace ECS.Systems
 {
     public class SelectSystem : ReactiveSystem<EventAddComponent<SelectableComponent>>
     {
@@ -41,8 +42,8 @@ namespace ECS.Game.Systems
         {
             foreach (var a in _ants)
             {
-                _ants.GetEntity(a).GetAndFire<GatherComponent>().State = GatherState.MoveTo;
-                _ants.GetEntity(a).GetAndFire<GatherComponent>().GatheredEntity = entity;
+                _ants.GetEntity(a).SetGatherState(GatherState.MoveTo);
+                _ants.GetEntity(a).Get<GatherComponent>().GatheredEntity = entity;
             }
         }
     }

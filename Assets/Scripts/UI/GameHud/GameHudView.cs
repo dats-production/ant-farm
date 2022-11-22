@@ -2,7 +2,7 @@ using SimpleUi.Abstracts;
 using TMPro;
 using UnityEngine.UI;
 
-namespace Scripts.UI.GameHud 
+namespace UI.GameHud 
 {
     public class GameHudView : UiView
     {

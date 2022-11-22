@@ -4,7 +4,7 @@ namespace Services.Uid
 {
     public static class UidGenerator
     {
-        private static readonly HashSet<PdUtils.Uid> HashSet = new HashSet<PdUtils.Uid>();
+        private static readonly HashSet<DataBase.Uid> HashSet = new HashSet<DataBase.Uid>();
         private static int _current;
 
         public static void Clear()
@@ -23,21 +23,21 @@ namespace Services.Uid
             }
         }
 
-        public static PdUtils.Uid Next()
+        public static DataBase.Uid Next()
         {
-            PdUtils.Uid uid;
+            DataBase.Uid uid;
             do
             {
-                uid = (PdUtils.Uid) NextUid;
+                uid = (DataBase.Uid) NextUid;
             } while (HashSet.Contains(uid));
 
             HashSet.Add(uid);
             return uid;
         }
 
-        public static void Reserve(PdUtils.Uid uid) => HashSet.Add(uid);
+        public static void Reserve(DataBase.Uid uid) => HashSet.Add(uid);
 
-        public static void Remove(PdUtils.Uid uid)
+        public static void Remove(DataBase.Uid uid)
         {
             HashSet.Remove(uid);
         }

@@ -1,4 +1,4 @@
-﻿namespace ECS.Utils
+﻿namespace Services.SpawnService
 {
     public interface ISpawnService<in TEntity, out TObject>
     {

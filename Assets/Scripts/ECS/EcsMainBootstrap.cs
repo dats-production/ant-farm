@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using ECS.Components;
 using ECS.Core.Utils.SystemInterfaces;
 using ECS.Game.Components;
 using ECS.Utils.Extensions;

@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace Game.Utils.MonoBehUtils
+namespace Utils.MonoBehUtils
 {
     public class QuadArea : MonoBehaviour
     {

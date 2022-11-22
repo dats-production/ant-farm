@@ -1,9 +1,9 @@
-﻿using ECS.Utils.Impls;
-using Initializers;
-using Scripts.UI.GameHud;
-using Scripts.UI.Gather;
-using Scripts.UI.Warehouse;
+﻿using Initializers;
 using Services.PauseService.Impls;
+using Services.SpawnService;
+using UI.GameHud;
+using UI.Gather;
+using UI.Warehouse;
 using Zenject;
 
 namespace Installers

@@ -1,12 +1,9 @@
 using System;
-using ECS.Components.Flags;
-using ECS.Utils.Extensions;
 using Leopotam.Ecs;
 using Signals;
 using SimpleUi.Abstracts;
 using SimpleUi.Signals;
 using UniRx;
-using UnityEngine;
 using Zenject;
 
 namespace UI.Gather 

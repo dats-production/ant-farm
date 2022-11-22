@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using ECS.Components;
 using ECS.Core.Utils.ReactiveSystem;
 using ECS.DataSave;
 using ECS.Game.Components;

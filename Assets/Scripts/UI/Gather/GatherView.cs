@@ -1,4 +1,3 @@
-using System;
 using SimpleUi.Abstracts;
 using TMPro;
 using UnityEngine;

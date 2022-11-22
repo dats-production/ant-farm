@@ -1,13 +1,12 @@
 ﻿using System.Diagnostics.CodeAnalysis;
-using DataBase.Game;
+using DataBase;
+using ECS.Components.Events;
 using ECS.Components.Link;
 using ECS.Core.Utils.ReactiveSystem;
-using ECS.Game.Components;
-using ECS.Game.Components.Events;
 using Leopotam.Ecs;
 using Services.PauseService;
 
-namespace ECS.Game.Systems.Linked
+namespace ECS.Systems.Linked
 {
     [SuppressMessage("ReSharper", "SuspiciousTypeConversion.Global")]
     public class GamePauseSystem : ReactiveSystem<ChangeStageComponent>

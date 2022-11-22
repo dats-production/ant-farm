@@ -1,6 +1,6 @@
-﻿using DataBase.Game;
+﻿using DataBase;
 
-namespace ECS.Game.Components
+namespace ECS.Components
 {
     public struct GameStageComponent
     {

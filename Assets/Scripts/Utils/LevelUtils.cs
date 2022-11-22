@@ -2,7 +2,7 @@
 using UnityEngine;
 using Random = UnityEngine.Random;
 
-namespace Game.Utils
+namespace Utils
 {
     public static class LevelUtils
     {

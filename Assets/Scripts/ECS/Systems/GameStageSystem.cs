@@ -1,9 +1,9 @@
-﻿using ECS.Core.Utils.ReactiveSystem;
-using ECS.Game.Components;
-using ECS.Game.Components.Events;
+﻿using ECS.Components;
+using ECS.Components.Events;
+using ECS.Core.Utils.ReactiveSystem;
 using Leopotam.Ecs;
 
-namespace ECS.Game.Systems
+namespace ECS.Systems
 {
     public class GameStageSystem : ReactiveSystem<ChangeStageComponent>
     {

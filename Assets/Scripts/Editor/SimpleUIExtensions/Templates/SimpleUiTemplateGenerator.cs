@@ -6,11 +6,10 @@
 
 using System;
 using System.IO;
-using JokerGhost;
 using UnityEditor;
 using UnityEngine;
 
-namespace SimpleUIExtensions.Templates 
+namespace Editor.SimpleUIExtensions.Templates 
 {
     /// <summary>
     /// Generates templates of simpleUI user classes.

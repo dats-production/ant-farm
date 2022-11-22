@@ -1,4 +1,4 @@
-﻿namespace ECS.Game.Components
+﻿namespace ECS.Components
 {
     public struct MultiplierComponent
     {

@@ -1,11 +1,12 @@
 ﻿using ECS;
 using ECS.Game.Systems;
-using ECS.Game.Systems.GameDay;
 using ECS.Game.Systems.Linked;
 using ECS.Systems;
-using Game.Utils.MonoBehUtils;
+using ECS.Systems.GameDay;
+using ECS.Systems.Linked;
 using Leopotam.Ecs;
 using UnityEngine;
+using Utils.MonoBehUtils;
 using Zenject;
 
 namespace Installers

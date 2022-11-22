@@ -1,7 +1,6 @@
 using SimpleUi;
-using UI.Gather;
 
-namespace Scripts.UI.Gather 
+namespace UI.Gather 
 {
     public class GatherWindow : WindowBase 
     {

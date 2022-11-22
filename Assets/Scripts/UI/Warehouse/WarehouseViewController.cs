@@ -1,4 +1,3 @@
-using Scripts.UI.Warehouse;
 using SimpleUi.Abstracts;
 using SimpleUi.Signals;
 using UniRx;

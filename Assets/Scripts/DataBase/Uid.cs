@@ -2,7 +2,7 @@
 using Newtonsoft.Json;
 using UnityEngine;
 
-namespace PdUtils
+namespace DataBase
 {
     [Serializable]
     public struct Uid : IEquatable<Uid>

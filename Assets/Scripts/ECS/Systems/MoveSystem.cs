@@ -1,11 +1,9 @@
-﻿using ECS.Components.Link;
+﻿using ECS.Components;
+using ECS.Components.Link;
 using ECS.Core.Utils.ReactiveSystem;
-using ECS.Core.Utils.ReactiveSystem.Components;
-using ECS.Game.Components;
-using ECS.Views;
 using Leopotam.Ecs;
 
-namespace ECS.Game.Systems
+namespace ECS.Systems
 {
     public class MoveSystem : ReactiveSystem<MoveComponent>
     {

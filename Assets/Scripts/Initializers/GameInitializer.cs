@@ -1,6 +1,6 @@
 ﻿using Leopotam.Ecs;
-using Scripts.UI.GameHud;
 using SimpleUi.Signals;
+using UI.GameHud;
 using Zenject;
 
 namespace Initializers

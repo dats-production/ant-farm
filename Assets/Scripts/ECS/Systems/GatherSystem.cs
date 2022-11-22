@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Threading.Tasks;
+using ECS.Components;
+using ECS.Components.Events;
 using ECS.Components.Flags;
 using ECS.Components.Link;
 using ECS.Core.Utils.ReactiveSystem;
@@ -11,16 +13,17 @@ using UnityEngine;
 
 namespace ECS.Systems
 {
-    public class GatherSystem : ReactiveSystem<EventAddComponent<GatherComponent>>
+    public class GatherSystem : ReactiveSystem<ChangeGatherStateComponent>
     {
         private readonly EcsFilter<WarehouseComponent, PositionComponent> _warehouses;
-        protected override EcsFilter<EventAddComponent<GatherComponent>> ReactiveFilter { get; }
+        protected override EcsFilter<ChangeGatherStateComponent> ReactiveFilter { get; }
         //protected override bool DeleteEvent { get; } = false;
 
         protected override async void Execute(EcsEntity entity)
         {
+            var state = entity.Get<ChangeGatherStateComponent>().State;
+            entity.Get<GatherComponent>().State = state;
             Debug.Log(entity.Get<GatherComponent>().State);
-            var state = entity.Get<GatherComponent>().State;
 
             switch (state)
             {
@@ -31,7 +34,7 @@ namespace ECS.Systems
                     break;
                 case GatherState.Gather:
                     await WaitForSeconds(2);
-                    entity.GetAndFire<GatherComponent>().State = GatherState.MoveBack;
+                    entity.SetGatherState(GatherState.MoveBack);
                     break;
                 case GatherState.MoveBack:
                     var warehousePos = _warehouses.Get2(0).Value;

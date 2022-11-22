@@ -1,9 +1,10 @@
-﻿using DataBase.Game;
+﻿using DataBase;
+using ECS.Components;
+using ECS.Components.Events;
 using ECS.Game.Components;
 using ECS.Game.Components.Events;
 using ECS.Game.Components.Input;
 using Leopotam.Ecs;
-using PdUtils;
 
 namespace ECS.Utils.Extensions
 {
@@ -17,7 +18,8 @@ namespace ECS.Utils.Extensions
             return default;
         }
 
-        public static void SetStage(this EcsWorld world, EGameStage value) => world.GetGameStage().Get<ChangeStageComponent>().Value = value;
+        public static void SetStage(this EcsWorld world, EGameStage value) => 
+            world.GetGameStage().Get<ChangeStageComponent>().Value = value;
 
         public static EcsEntity GetGameStage(this EcsWorld world)
         {

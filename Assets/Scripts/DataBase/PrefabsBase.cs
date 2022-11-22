@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-namespace DataBase.Objects.Impl
+namespace DataBase
 {
     [CreateAssetMenu(menuName = "Bases/PrefabsBase", fileName = "PrefabsBase")]
     public class PrefabsBase : ScriptableObject, IPrefabsBase

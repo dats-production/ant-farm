@@ -1,15 +1,14 @@
-﻿using DataBase.Game;
+﻿using DataBase;
+using ECS.Components;
 using ECS.Components.Flags;
-using ECS.DataSave;
 using ECS.Game.Components;
 using ECS.Utils.Extensions;
-using Game.Utils.MonoBehUtils;
 using Leopotam.Ecs;
 using Services.Uid;
-using UnityEngine;
+using Utils.MonoBehUtils;
 using Zenject;
 
-namespace ECS.Game.Systems
+namespace ECS.Systems
 {
     public class GameInitializeSystem : IEcsInitSystem
     {

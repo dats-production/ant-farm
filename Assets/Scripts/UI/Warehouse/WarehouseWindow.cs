@@ -1,7 +1,6 @@
 using SimpleUi;
-using UI.Warehouse;
 
-namespace Scripts.UI.Warehouse 
+namespace UI.Warehouse 
 {
     public class WarehouseWindow : WindowBase 
     {

@@ -1,5 +1,4 @@
-﻿using Scripts.UI.GameHud;
-using SimpleUi;
+﻿using SimpleUi;
 using UI.GameHud;
 using UI.Gather;
 using UI.Warehouse;

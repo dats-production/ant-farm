@@ -1,4 +1,5 @@
 ﻿
+using ECS.Components.Events;
 using ECS.Components.Flags;
 using ECS.Components.Link;
 using ECS.Core.Utils.SystemInterfaces;
@@ -23,11 +24,11 @@ public class CheckDistanseSystem : IEcsUpdateSystem
             {
                 case GatherState.MoveTo:
                     if (movable.IsDestinationReached())
-                        _gatheringEntities.GetEntity(g).GetAndFire<GatherComponent>().State = GatherState.Gather;
+                        _gatheringEntities.GetEntity(g).SetGatherState(GatherState.Gather);
                     break;
                 case GatherState.MoveBack:
                     if (movable.IsDestinationReached())
-                        _gatheringEntities.GetEntity(g).GetAndFire<GatherComponent>().State = GatherState.MoveTo;
+                        _gatheringEntities.GetEntity(g).SetGatherState(GatherState.MoveTo);
                     break;
                 case GatherState.Gather:
                 default:

@@ -1,5 +1,6 @@
-﻿using DataBase.Game;
-using DataBase.Timer;
+﻿using DataBase;
+using ECS.Components;
+using ECS.Components.Events;
 using ECS.Core.Utils.SystemInterfaces;
 using ECS.Game.Components;
 using ECS.Game.Components.Events;
@@ -7,7 +8,7 @@ using ECS.Game.Components.Listeners;
 using Leopotam.Ecs;
 using UnityEngine;
 
-namespace ECS.Game.Systems.GameDay
+namespace ECS.Systems.GameDay
 {
     public class GameTimerSystem : IEcsUpdateSystem, IEcsInitSystem
     {

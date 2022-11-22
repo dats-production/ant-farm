@@ -1,7 +1,6 @@
-﻿using DataBase.Game;
-using Leopotam.Ecs;
+﻿using DataBase;
 
-namespace ECS.Game.Components.Events
+namespace ECS.Components.Events
 {
     public struct ChangeStageComponent
     {

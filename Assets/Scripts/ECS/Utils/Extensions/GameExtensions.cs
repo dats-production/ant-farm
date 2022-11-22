@@ -1,4 +1,7 @@
-﻿using DataBase.Game;
+﻿using DataBase;
+using ECS.Components;
+using ECS.Components.Events;
+using ECS.Components.Flags;
 using ECS.Core.Utils.ReactiveSystem.Components;
 using ECS.Game.Components;
 using ECS.Game.Components.Flags;
@@ -41,6 +44,11 @@ namespace ECS.Utils.Extensions
         {
             entity.Del<T>();
             entity.Get<EventRemoveComponent<T>>();
+        }
+        
+        public static void SetGatherState(this ref EcsEntity entity, GatherState state)
+        {
+            entity.Get<ChangeGatherStateComponent>().State = state;
         }
     }
 }

@@ -1,4 +1,3 @@
-using Scripts.UI.GameHud;
 using SimpleUi.Abstracts;
 using UniRx;
 using UnityEngine;

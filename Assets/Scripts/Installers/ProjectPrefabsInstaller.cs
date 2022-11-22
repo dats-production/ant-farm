@@ -1,5 +1,4 @@
-﻿using DataBase.Objects;
-using DataBase.Objects.Impl;
+﻿using DataBase;
 using UnityEngine;
 using Zenject;
 using ZenjectUtil.Test.Extensions;

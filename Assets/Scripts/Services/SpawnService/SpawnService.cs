@@ -1,13 +1,13 @@
 ﻿using System;
-using DataBase.Objects;
-using ECS.Game.Components;
-using ECS.Game.Components.Flags;
+using DataBase;
+using ECS.Components;
+using ECS.Utils;
 using ECS.Views;
 using Leopotam.Ecs;
 using UnityEngine;
 using Zenject;
 
-namespace ECS.Utils.Impls
+namespace Services.SpawnService
 {
     public class SpawnService : ISpawnService<EcsEntity, ILinkable>
     {
