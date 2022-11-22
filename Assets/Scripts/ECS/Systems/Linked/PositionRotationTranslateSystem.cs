@@ -1,4 +1,5 @@
-﻿using ECS.Core.Utils.SystemInterfaces;
+﻿using ECS.Components.Link;
+using ECS.Core.Utils.SystemInterfaces;
 using ECS.Game.Components;
 using Leopotam.Ecs;
 

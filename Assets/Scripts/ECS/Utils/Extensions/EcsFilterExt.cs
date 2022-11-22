@@ -1,4 +1,5 @@
-﻿using ECS.Game.Components;
+﻿using ECS.Components.Link;
+using ECS.Game.Components;
 using Leopotam.Ecs;
 using UnityEngine;
 

@@ -1,5 +1,6 @@
 ﻿using System.Diagnostics.CodeAnalysis;
 using DataBase.Game;
+using ECS.Components.Link;
 using ECS.Core.Utils.ReactiveSystem;
 using ECS.Game.Components;
 using ECS.Game.Components.Events;

@@ -1,7 +1,6 @@
 ﻿using ECS.Views;
-using Leopotam.Ecs;
 
-namespace ECS.Components.Flags
+namespace ECS.Components.Link
 {
     public struct SelectableComponent
     {

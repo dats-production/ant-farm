@@ -1,30 +1,48 @@
 ﻿using System;
+using Leopotam.Ecs;
 using UnityEngine;
 using UnityEngine.AI;
 
 namespace ECS.Views
 {
-    public class AntView : LinkableView
+    public interface IMovable
+    {
+        void SetDestination(Vector3 point);
+        bool IsDestinationReached();
+    }
+    
+    public class AntView : LinkableView, IMovable
     {
         [SerializeField] private NavMeshAgent agent;
 
-        public void SetDestination(Vector3 destination)
-        {
-            agent.stoppingDistance = 4;
-            agent.destination = destination;
 
+        public override void Link(EcsEntity entity)
+        {
+            base.Link(entity);
+            agent.speed = 15;
+            agent.stoppingDistance = 6;
+            agent.acceleration = 30;
+            agent.angularSpeed = 720;
+        }
+
+        public void SetDestination(Vector3 point)
+        {
+
+            agent.SetDestination(point);
         }
 
         private void Update()
         {
-            Debug.Log(IsDestinationReached());
+            IsDestinationReached();
         }
 
         public bool IsDestinationReached()
         {
             if (agent.pathPending) return false;
             if (agent.remainingDistance > agent.stoppingDistance) return false;
-            return !agent.hasPath || agent.velocity.sqrMagnitude == 0f;
+            if (!agent.hasPath) return false;
+            agent.ResetPath();
+            return true;
         }
     }
 }

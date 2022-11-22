@@ -33,9 +33,10 @@ namespace Installers
             Container.BindInterfacesAndSelfTo<GamePauseSystem>().AsSingle();
             //Container.BindInterfacesAndSelfTo<SaveGameSystem>().AsSingle();
             
-            Container.BindInterfacesAndSelfTo<AntMoveSystem>().AsSingle();
+            Container.BindInterfacesAndSelfTo<MoveSystem>().AsSingle();
             Container.BindInterfacesAndSelfTo<SelectSystem>().AsSingle();
             Container.BindInterfacesAndSelfTo<GatherSystem>().AsSingle();
+            Container.BindInterfacesAndSelfTo<CheckDistanseSystem>().AsSingle();
 
             Container.BindInterfacesAndSelfTo<GameStageSystem>().AsSingle();        //always must been last
             Container.BindInterfacesAndSelfTo<CleanUpSystem>().AsSingle();          //must been latest than last!

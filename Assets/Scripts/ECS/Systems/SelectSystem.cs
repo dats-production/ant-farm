@@ -1,5 +1,8 @@
 ﻿using ECS.Components.Flags;
+using ECS.Components.Link;
 using ECS.Core.Utils.ReactiveSystem;
+using ECS.Core.Utils.ReactiveSystem.Components;
+using ECS.Utils.Extensions;
 using Leopotam.Ecs;
 using Scripts.UI.Gather;
 using Scripts.UI.Warehouse;
@@ -9,10 +12,12 @@ using Zenject;
 
 namespace ECS.Game.Systems
 {
-    public class SelectSystem : ReactiveSystem<SelectableComponent>
+    public class SelectSystem : ReactiveSystem<EventAddComponent<SelectableComponent>>
     {
         [Inject] private SignalBus _signalBus;
-        protected override EcsFilter<SelectableComponent> ReactiveFilter { get; }
+
+        private readonly EcsFilter<AntComponent> _ants;
+        protected override EcsFilter<EventAddComponent<SelectableComponent>> ReactiveFilter { get; }
         protected override void Execute(EcsEntity entity)
         {
             var view = entity.Get<SelectableComponent>().View;
@@ -30,10 +35,15 @@ namespace ECS.Game.Systems
             {
                 _signalBus.OpenWindow<WarehouseWindow>();
             }
-        }        
+        }      
+        
         private void OnGather(EcsEntity entity)
         {
-            entity.Get<GatherComponent>();
+            foreach (var a in _ants)
+            {
+                _ants.GetEntity(a).GetAndFire<GatherComponent>().State = GatherState.MoveTo;
+                _ants.GetEntity(a).GetAndFire<GatherComponent>().GatheredEntity = entity;
+            }
         }
     }
 }

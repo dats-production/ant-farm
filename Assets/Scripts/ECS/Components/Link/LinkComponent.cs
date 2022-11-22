@@ -1,6 +1,6 @@
 ﻿using ECS.Views;
 
-namespace ECS.Game.Components
+namespace ECS.Components.Link
 {
     public struct LinkComponent
     {

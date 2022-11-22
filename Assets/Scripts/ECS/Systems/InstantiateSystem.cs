@@ -1,4 +1,5 @@
 ﻿using ECS.Components.Flags;
+using ECS.Components.Link;
 using ECS.Core.Utils.ReactiveSystem;
 using ECS.Core.Utils.ReactiveSystem.Components;
 using ECS.Game.Components;
@@ -6,7 +7,6 @@ using ECS.Utils;
 using ECS.Utils.Extensions;
 using ECS.Views;
 using Leopotam.Ecs;
-using UnityEngine;
 using Zenject;
 
 namespace ECS.Game.Systems
@@ -21,8 +21,11 @@ namespace ECS.Game.Systems
             linkable?.Link(entity);
             entity.Get<LinkComponent>().View = linkable;
 
-            if (linkable is not ISelectable selectableView) return;
-            entity.GetAndFire<SelectableComponent>().View = selectableView;
+            if (linkable is ISelectable selectable) 
+                entity.GetAndFire<SelectableComponent>().View = selectable;
+            
+            if (linkable is IMovable movable) 
+                entity.Get<MovableComponent>().View = movable;
         }
     }
 }
