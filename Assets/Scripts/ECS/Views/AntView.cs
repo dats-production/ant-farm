@@ -20,9 +20,9 @@ namespace ECS.Views
         {
             base.Link(entity);
             agent.speed = 15;
-            agent.stoppingDistance = 6;
-            agent.acceleration = 30;
-            agent.angularSpeed = 720;
+            agent.stoppingDistance = 3;
+            agent.acceleration = 100;
+            agent.angularSpeed = 1720;
         }
 
         public void SetDestination(Vector3 point)
@@ -38,6 +38,7 @@ namespace ECS.Views
 
         public bool IsDestinationReached()
         {
+            //if(agent == null) return false;
             if (agent.pathPending) return false;
             if (agent.remainingDistance > agent.stoppingDistance) return false;
             if (!agent.hasPath) return false;

@@ -19,3 +19,7 @@ MonoBehaviour:
     GameObject: {fileID: 5298061214108603291, guid: 2816acd106338684fb7556798e58752b, type: 3}
   - Name: Exit
     GameObject: {fileID: 6053897246803577485, guid: dfffba9cbeb0ebc478949f57352d7284, type: 3}
+  - Name: Enter
+    GameObject: {fileID: 6053897246803577485, guid: 0c5021067a7dfd145a5dcebbe8162d56, type: 3}
+  - Name: Food
+    GameObject: {fileID: 6053897246803577485, guid: 293c3f6ef0eedfb43b6c1446f21582c5, type: 3}

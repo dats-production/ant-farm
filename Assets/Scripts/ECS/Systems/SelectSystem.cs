@@ -1,4 +1,4 @@
-﻿using ECS.Components.Events;
+﻿using ECS.Components;
 using ECS.Components.Flags;
 using ECS.Components.Link;
 using ECS.Core.Utils.ReactiveSystem;
@@ -27,7 +27,7 @@ namespace ECS.Systems
 
         private void OnMouseDown(EcsEntity selectedEntity)
         {
-            if(selectedEntity.Has<ExitComponent>())
+            if(selectedEntity.Has<GatherableComponent>())
             {
                 _signalBus.OpenWindow<GatherWindow>();
                 _signalBus.Fire(new SignalSelect(selectedEntity, OnGather));
@@ -42,8 +42,8 @@ namespace ECS.Systems
         {
             foreach (var a in _ants)
             {
-                _ants.GetEntity(a).SetGatherState(GatherState.MoveTo);
-                _ants.GetEntity(a).Get<GatherComponent>().GatheredEntity = entity;
+                _ants.GetEntity(a).SetGatherState(GatherStage.MoveToExit);
+                _ants.GetEntity(a).Get<GatherComponent>().GatherableUid = entity.Get<UIdComponent>().Value;
             }
         }
     }

@@ -1,7 +1,7 @@
 ﻿using System;
 using Leopotam.Ecs;
 using UnityEngine;
-using UnityEngine.AI;
+using UnityEngine.EventSystems;
 
 namespace ECS.Views
 {
@@ -19,6 +19,23 @@ namespace ECS.Views
             _selectedEntity = selectedEntity;
             _mouseDownAction = mouseDownAction;
         }
-        private void OnMouseDown() => _mouseDownAction.Invoke(_selectedEntity);
+        
+        // private void Update()
+        // {
+        //     if(Input.GetMouseButtonDown(0))
+        //     {
+        //         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        //         RaycastHit hit;
+        //         if (Physics.Raycast(ray, out hit, Mathf.Infinity))
+        //         {
+        //             Debug.Log(hit.transform.gameObject);
+        //         }
+        //     }
+        // }
+
+        private void OnMouseDown()
+        {
+            _mouseDownAction.Invoke(_selectedEntity);
+        }
     }
 }

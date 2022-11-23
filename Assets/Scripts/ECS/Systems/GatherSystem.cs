@@ -13,42 +13,28 @@ using UnityEngine;
 
 namespace ECS.Systems
 {
-    public class GatherSystem : ReactiveSystem<ChangeGatherStateComponent>
+    public class GatherSystem : ReactiveSystem<ChangeGatherStageComponent>
     {
-        private readonly EcsFilter<WarehouseComponent, PositionComponent> _warehouses;
-        protected override EcsFilter<ChangeGatherStateComponent> ReactiveFilter { get; }
+        private readonly EcsWorld _world;
+        
+        protected override EcsFilter<ChangeGatherStageComponent> ReactiveFilter { get; }
         //protected override bool DeleteEvent { get; } = false;
 
         protected override async void Execute(EcsEntity entity)
         {
-            var state = entity.Get<ChangeGatherStateComponent>().State;
-            entity.Get<GatherComponent>().State = state;
-            Debug.Log(entity.Get<GatherComponent>().State);
+            var stage = entity.Get<ChangeGatherStageComponent>().Stage;
+            entity.Get<GatherComponent>().Stage = stage;
+            Debug.Log(entity.Get<GatherComponent>().Stage);
 
-            switch (state)
+            if (stage == GatherStage.Gather)
             {
-                case GatherState.MoveTo:
-                    var gatheredEntity = entity.Get<GatherComponent>().GatheredEntity;
-                    var gazerPos = gatheredEntity.Get<PositionComponent>().Value;
-                    entity.Get<MoveComponent>().Value = gazerPos;
-                    break;
-                case GatherState.Gather:
-                    await WaitForSeconds(2);
-                    entity.SetGatherState(GatherState.MoveBack);
-                    break;
-                case GatherState.MoveBack:
-                    var warehousePos = _warehouses.Get2(0).Value;
-                    entity.Get<MoveComponent>().Value = warehousePos;
-                    break;
-                default:
-                    Debug.LogError($"There is no Gather State: {state}");
-                    break;
+                await WaitForSeconds(3, entity);
             }
         }
-
-        private async Task WaitForSeconds(float seconds)
+        private async Task WaitForSeconds(float seconds, EcsEntity entity)
         {
             await Task.Delay(TimeSpan.FromSeconds(seconds));
+            if(entity.IsAlive()) entity.SetGatherState(GatherStage.MoveToWarehouse);
         }
     }
 }

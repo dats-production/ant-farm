@@ -2,8 +2,8 @@
 
 namespace ECS.Components.Events
 {
-    public struct ChangeGatherStateComponent
+    public struct ChangeGatherStageComponent
     {
-        public GatherState State;
+        public GatherStage Stage;
     }
 }

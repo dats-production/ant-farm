@@ -1,6 +1,7 @@
 ﻿using DataBase;
 using ECS.Components;
 using ECS.Components.Flags;
+using ECS.Components.Resources;
 using ECS.Game.Components;
 using ECS.Utils.Extensions;
 using Leopotam.Ecs;
@@ -14,6 +15,7 @@ namespace ECS.Systems
     {
         //[Inject] private readonly IGameStateService<GameState> _generalState;
         [Inject] private readonly GetPointFromScene _getPointFromScene;
+        private readonly int _antsCount = 6;
         
         private readonly EcsWorld _world;
         public void Init()
@@ -21,17 +23,34 @@ namespace ECS.Systems
             if (LoadGame()) return;
             //CreateCamera();
             CreateTimer();
-            CreateAnt();
+            CreateAnt(_antsCount);
+            CreateFood();
             CreateWarehouse();
             CreateExit();
+            CreateEnter();
         }
 
-        private void CreateAnt()
+        private void CreateFood()
         {
             var entity = _world.NewEntity();
-            entity.Get<AntComponent>();
+            entity.Get<FoodComponent>().Value = 100;
+            entity.Get<GatherableComponent>();
             entity.Get<UIdComponent>().Value = UidGenerator.Next();
-            entity.GetAndFire<PrefabComponent>().Value = "Ant";
+            entity.GetAndFire<PrefabComponent>().Value = "Food";
+            var point = _getPointFromScene.GetPoint("Food");
+            entity.Get<PositionComponent>().Value = point.position;
+        }
+
+
+        private void CreateAnt(int count)
+        {
+            for (int i = 0; i < count; i++)
+            {
+                var entity = _world.NewEntity();
+                entity.Get<AntComponent>();
+                entity.Get<UIdComponent>().Value = UidGenerator.Next();
+                entity.GetAndFire<PrefabComponent>().Value = "Ant";                
+            }
         }
         
         private void CreateWarehouse()
@@ -41,6 +60,16 @@ namespace ECS.Systems
             entity.Get<UIdComponent>().Value = UidGenerator.Next();
             entity.GetAndFire<PrefabComponent>().Value = "Warehouse";
             var point = _getPointFromScene.GetPoint("Warehouse");
+            entity.Get<PositionComponent>().Value = point.position;
+        }
+        
+        private void CreateEnter()
+        {
+            var entity = _world.NewEntity();
+            entity.Get<EnterComponent>();
+            entity.Get<UIdComponent>().Value = UidGenerator.Next();
+            entity.GetAndFire<PrefabComponent>().Value = "Enter";
+            var point = _getPointFromScene.GetPoint("Enter");
             entity.Get<PositionComponent>().Value = point.position;
         }
         

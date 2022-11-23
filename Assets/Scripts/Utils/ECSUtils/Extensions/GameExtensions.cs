@@ -46,9 +46,9 @@ namespace ECS.Utils.Extensions
             entity.Get<EventRemoveComponent<T>>();
         }
         
-        public static void SetGatherState(this ref EcsEntity entity, GatherState state)
+        public static void SetGatherState(this ref EcsEntity entity, GatherStage stage)
         {
-            entity.Get<ChangeGatherStateComponent>().State = state;
+            entity.Get<ChangeGatherStageComponent>().Stage = stage;
         }
     }
 }

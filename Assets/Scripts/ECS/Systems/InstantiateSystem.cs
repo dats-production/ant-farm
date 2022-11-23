@@ -1,17 +1,14 @@
 ﻿using ECS.Components;
-using ECS.Components.Flags;
 using ECS.Components.Link;
 using ECS.Core.Utils.ReactiveSystem;
 using ECS.Core.Utils.ReactiveSystem.Components;
-using ECS.Game.Components;
-using ECS.Utils;
 using ECS.Utils.Extensions;
 using ECS.Views;
 using Leopotam.Ecs;
 using Services.SpawnService;
 using Zenject;
 
-namespace ECS.Game.Systems
+namespace ECS.Systems
 {
     public class InstantiateSystem : ReactiveSystem<EventAddComponent<PrefabComponent>>
     {
