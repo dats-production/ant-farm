@@ -1,17 +1,18 @@
 ﻿using System;
+using DataBase;
 using Leopotam.Ecs;
 
 namespace Signals
 {
     public struct SignalSelect
     {
-        public readonly Action<EcsEntity> OnGather;
-        public EcsEntity Entity;
+        public readonly Action<Uid> OnGather;
+        public Uid SelectedUid;
 
-        public SignalSelect(EcsEntity entityToGather,
-            Action<EcsEntity> onGather = null)
+        public SignalSelect(Uid selectedUid,
+            Action<Uid> onGather = null)
         {
-            Entity = entityToGather;
+            SelectedUid = selectedUid;
             OnGather = onGather;
         }
     }

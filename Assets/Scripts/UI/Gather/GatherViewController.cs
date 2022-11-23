@@ -1,4 +1,5 @@
 using System;
+using DataBase;
 using Leopotam.Ecs;
 using Signals;
 using SimpleUi.Abstracts;
@@ -24,7 +25,7 @@ namespace UI.Gather
             View.closeButton.OnClickAsObservable().Subscribe(Hide).AddTo(View);
 
             _signalBus.GetStream<SignalSelect>()
-                .Subscribe(x => OnSelect(x.Entity, x.OnGather))
+                .Subscribe(x => OnSelect(x.SelectedUid, x.OnGather))
                 .AddTo(View);
         }
 
@@ -35,10 +36,10 @@ namespace UI.Gather
             //     .SetEase(Ease.OutCubic);
         }
         
-        private void OnSelect(EcsEntity selectedEntity, Action<EcsEntity> onGather)
+        private void OnSelect(Uid selectedUid, Action<Uid> onGather)
         {
             View.gatherButton.OnClickAsObservable()
-                .Subscribe(x=>onGather.Invoke(selectedEntity))
+                .Subscribe(x=>onGather.Invoke(selectedUid))
                 .AddTo(View);
         }
         

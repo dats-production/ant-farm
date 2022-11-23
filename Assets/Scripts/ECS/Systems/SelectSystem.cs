@@ -1,4 +1,5 @@
-﻿using ECS.Components;
+﻿using DataBase;
+using ECS.Components;
 using ECS.Components.Flags;
 using ECS.Components.Link;
 using ECS.Core.Utils.ReactiveSystem;
@@ -30,7 +31,8 @@ namespace ECS.Systems
             if(selectedEntity.Has<GatherableComponent>())
             {
                 _signalBus.OpenWindow<GatherWindow>();
-                _signalBus.Fire(new SignalSelect(selectedEntity, OnGather));
+                var selectedUid = selectedEntity.Get<UIdComponent>().Value;
+                _signalBus.Fire(new SignalSelect(selectedUid, OnGather));
             }
             else if (selectedEntity.Has<WarehouseComponent>())
             {
@@ -38,12 +40,12 @@ namespace ECS.Systems
             }
         }      
         
-        private void OnGather(EcsEntity entity)
+        private void OnGather(Uid uid)
         {
             foreach (var a in _ants)
             {
                 _ants.GetEntity(a).SetGatherState(GatherStage.MoveToExit);
-                _ants.GetEntity(a).Get<GatherComponent>().GatherableUid = entity.Get<UIdComponent>().Value;
+                _ants.GetEntity(a).Get<GatherComponent>().GatherableUid = uid;
             }
         }
     }
