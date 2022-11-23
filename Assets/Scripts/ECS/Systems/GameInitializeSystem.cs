@@ -34,7 +34,6 @@ namespace ECS.Systems
         {
             var entity = _world.NewEntity();
             entity.Get<FoodComponent>().Value = 100;
-            entity.Get<GatherableComponent>();
             entity.Get<UIdComponent>().Value = UidGenerator.Next();
             entity.GetAndFire<PrefabComponent>().Value = "Food";
             var point = _getPointFromScene.GetPoint("Food");

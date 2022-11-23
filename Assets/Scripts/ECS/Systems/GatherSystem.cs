@@ -4,6 +4,7 @@ using ECS.Components;
 using ECS.Components.Events;
 using ECS.Components.Flags;
 using ECS.Components.Link;
+using ECS.Components.Resources;
 using ECS.Core.Utils.ReactiveSystem;
 using ECS.Core.Utils.ReactiveSystem.Components;
 using ECS.Game.Components;
@@ -24,17 +25,30 @@ namespace ECS.Systems
         {
             var stage = entity.Get<ChangeGatherStageComponent>().Stage;
             entity.Get<GatherComponent>().Stage = stage;
-            Debug.Log(entity.Get<GatherComponent>().Stage);
+            //Debug.Log(entity.Get<GatherComponent>().Stage);
 
-            if (stage == GatherStage.Gather)
+            if (stage != GatherStage.Gather) return;
+            await WaitForSeconds(3);
+            if (!entity.IsAlive()) return;
+            entity.Get<FoodComponent>().Value = 1;
+            var gatherableUid = entity.Get<GatherComponent>().GatherableUid;
+            var gatherableEnt = _world.GetEntityWithUid(gatherableUid);            
+            gatherableEnt.Get<FoodComponent>().Value--;
+            
+            var gatherableView = gatherableEnt.Get<GatherableComponent>().View;
+            var entityPos = entity.Get<LinkComponent>().View.Transform.position;
+            gatherableView.GatherChunk(new Vector2(entityPos.x, entityPos.z));
+            
+            if (gatherableEnt.Get<FoodComponent>().Value <= 0)
             {
-                await WaitForSeconds(3, entity);
+                Debug.Log("FOOD is over");
             }
+            
+            entity.SetGatherState(GatherStage.MoveToEnter);
         }
-        private async Task WaitForSeconds(float seconds, EcsEntity entity)
+        private async Task WaitForSeconds(float seconds)
         {
             await Task.Delay(TimeSpan.FromSeconds(seconds));
-            if(entity.IsAlive()) entity.SetGatherState(GatherStage.MoveToWarehouse);
         }
     }
 }

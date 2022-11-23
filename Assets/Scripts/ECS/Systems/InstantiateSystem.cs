@@ -1,4 +1,5 @@
 ﻿using ECS.Components;
+using ECS.Components.Flags;
 using ECS.Components.Link;
 using ECS.Core.Utils.ReactiveSystem;
 using ECS.Core.Utils.ReactiveSystem.Components;
@@ -25,6 +26,9 @@ namespace ECS.Systems
             
             if (linkable is IMovable movable) 
                 entity.Get<MovableComponent>().View = movable;
+            
+            if(linkable is IGatherable gatherable)
+                entity.Get<GatherableComponent>().View = gatherable;
         }
     }
 }
