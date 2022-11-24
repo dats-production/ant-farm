@@ -16,7 +16,7 @@ namespace ECS.Game.Systems
     {
         //[Inject] private readonly IGameStateService<GameState> _gameState;
         private readonly EcsWorld _world;
-        private readonly EcsFilter<UIdComponent> _entities;
+        private readonly EcsFilter<UidComponent> _entities;
         protected override EcsFilter<SaveGameEventComponent> ReactiveFilter { get; }
         protected override void Execute(EcsEntity entity)
         {

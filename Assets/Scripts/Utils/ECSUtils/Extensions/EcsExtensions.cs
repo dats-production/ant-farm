@@ -31,11 +31,11 @@ namespace ECS.Utils.Extensions
         public static EcsEntity GetEntityWithUid(this EcsWorld world, Uid uid)
         {
             var value = new EcsEntity();
-            var filter = world.GetFilter(typeof(EcsFilter<UIdComponent>));
+            var filter = world.GetFilter(typeof(EcsFilter<UidComponent>));
             foreach (var i in filter)
             {
                 ref var entity = ref filter.GetEntity(i);
-                if (uid.Equals(entity.Get<UIdComponent>().Value))
+                if (uid.Equals(entity.Get<UidComponent>().Value))
                     return entity;
             }
             return value;

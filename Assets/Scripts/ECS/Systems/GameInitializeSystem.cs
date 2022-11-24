@@ -34,7 +34,7 @@ namespace ECS.Systems
         {
             var entity = _world.NewEntity();
             entity.Get<FoodComponent>().Value = 100;
-            entity.Get<UIdComponent>().Value = UidGenerator.Next();
+            entity.Get<UidComponent>().Value = UidGenerator.Next();
             entity.GetAndFire<PrefabComponent>().Value = "Food";
             var point = _getPointFromScene.GetPoint("Food");
             entity.Get<PositionComponent>().Value = point.position;
@@ -47,7 +47,7 @@ namespace ECS.Systems
             {
                 var entity = _world.NewEntity();
                 entity.Get<AntComponent>();
-                entity.Get<UIdComponent>().Value = UidGenerator.Next();
+                entity.Get<UidComponent>().Value = UidGenerator.Next();
                 entity.GetAndFire<PrefabComponent>().Value = "Ant";                
             }
         }
@@ -56,7 +56,7 @@ namespace ECS.Systems
         {
             var entity = _world.NewEntity();
             entity.Get<WarehouseComponent>();
-            entity.Get<UIdComponent>().Value = UidGenerator.Next();
+            entity.Get<UidComponent>().Value = UidGenerator.Next();
             entity.GetAndFire<PrefabComponent>().Value = "Warehouse";
             var point = _getPointFromScene.GetPoint("Warehouse");
             entity.Get<PositionComponent>().Value = point.position;
@@ -66,7 +66,7 @@ namespace ECS.Systems
         {
             var entity = _world.NewEntity();
             entity.Get<EnterComponent>();
-            entity.Get<UIdComponent>().Value = UidGenerator.Next();
+            entity.Get<UidComponent>().Value = UidGenerator.Next();
             entity.GetAndFire<PrefabComponent>().Value = "Enter";
             var point = _getPointFromScene.GetPoint("Enter");
             entity.Get<PositionComponent>().Value = point.position;
@@ -76,7 +76,7 @@ namespace ECS.Systems
         {
             var entity = _world.NewEntity();
             entity.Get<ExitComponent>();
-            entity.Get<UIdComponent>().Value = UidGenerator.Next();
+            entity.Get<UidComponent>().Value = UidGenerator.Next();
             entity.GetAndFire<PrefabComponent>().Value = "Exit";
             var point = _getPointFromScene.GetPoint("Exit");
             entity.Get<PositionComponent>().Value = point.position;
@@ -100,7 +100,7 @@ namespace ECS.Systems
         {
             var entity = _world.NewEntity();
             entity.Get<TimerComponent>();
-            entity.Get<UIdComponent>().Value = UidGenerator.Next();
+            entity.Get<UidComponent>().Value = UidGenerator.Next();
         }
         
         private void CreateCamera()

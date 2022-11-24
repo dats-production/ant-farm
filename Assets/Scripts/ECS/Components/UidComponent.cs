@@ -2,7 +2,7 @@
 
 namespace ECS.Components
 {
-    public struct UIdComponent
+    public struct UidComponent
     {
         public Uid Value;
         public override string ToString() => Value.ToString();

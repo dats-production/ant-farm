@@ -16,7 +16,7 @@ namespace ECS.Utils.Extensions
         public static EcsEntity CreateCamera(this EcsWorld world)
         {
             var entity = world.NewEntity();
-            entity.Get<UIdComponent>().Value = UidGenerator.Next();
+            entity.Get<UidComponent>().Value = UidGenerator.Next();
             entity.Get<PositionComponent>();
             entity.Get<RotationComponent>().Value = Quaternion.Euler(new Vector3(47,0,0));
             
@@ -28,7 +28,7 @@ namespace ECS.Utils.Extensions
         public static EcsEntity CreateGameStage(this EcsWorld world)
         {
             var entity = world.NewEntity();
-            entity.Get<UIdComponent>().Value = UidGenerator.Next();
+            entity.Get<UidComponent>().Value = UidGenerator.Next();
             entity.Get<GameStageComponent>().Value = EGameStage.Pause;
             return entity;
         }

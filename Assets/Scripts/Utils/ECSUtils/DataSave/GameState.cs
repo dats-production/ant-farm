@@ -38,8 +38,8 @@ namespace ECS.DataSave
             if (entity.Has<RotationComponent>())
                 Rotation = entity.Get<RotationComponent>().Value;
             
-            if (entity.Has<UIdComponent>())
-                Uid = entity.Get<UIdComponent>().Value;
+            if (entity.Has<UidComponent>())
+                Uid = entity.Get<UidComponent>().Value;
         }
 
         public void ReadState(EcsEntity entity)
@@ -54,7 +54,7 @@ namespace ECS.DataSave
                 entity.Get<RotationComponent>().Value = Rotation.Value;
             
             if (Uid.HasValue)
-                entity.Get<UIdComponent>().Value = Uid.Value;
+                entity.Get<UidComponent>().Value = Uid.Value;
             
             if (Prefab != null)
             {

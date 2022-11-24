@@ -15,14 +15,14 @@ namespace ECS.Utils.Extensions
         public static EcsEntity CreateUidEntity(this EcsWorld world)
         {
             var entity = world.NewEntity();
-            entity.Get<UIdComponent>().Value = UidGenerator.Next();
+            entity.Get<UidComponent>().Value = UidGenerator.Next();
             return entity;
         }
         
         public static EcsEntity CreateUidEntity<T>(this EcsWorld world) where T : struct
         {
             var entity = world.NewEntity();
-            entity.Get<UIdComponent>().Value = UidGenerator.Next();
+            entity.Get<UidComponent>().Value = UidGenerator.Next();
             entity.Get<T>();
             entity.Get<EventAddComponent<T>>();
             return entity;
@@ -31,7 +31,7 @@ namespace ECS.Utils.Extensions
         public static EcsEntity CreateLinkedEntity<T>(this EcsWorld world, ILinkable link) where T : struct
         {
             var entity = world.NewEntity();
-            entity.Get<UIdComponent>().Value = UidGenerator.Next();
+            entity.Get<UidComponent>().Value = UidGenerator.Next();
             entity.Get<LinkComponent>().View = link;
             entity.Get<T>();
             entity.Get<EventAddComponent<T>>();
@@ -42,7 +42,7 @@ namespace ECS.Utils.Extensions
         public static EcsEntity CreateMonoLinkEntity<TV>(this EcsWorld world, TV link) where TV : ILinkable
         {
             var entity = world.NewEntity();
-            entity.Get<UIdComponent>().Value = UidGenerator.Next();
+            entity.Get<UidComponent>().Value = UidGenerator.Next();
             entity.Get<MonoLinkComponent<TV>>().View = link;
             entity.Get<EventAddComponent<MonoLinkComponent<TV>>>();
             link.Link(entity);
@@ -52,7 +52,7 @@ namespace ECS.Utils.Extensions
         public static EcsEntity CreateMonoLinkEntity<TV>(this EcsWorld world, TV link, Uid parentUid) where TV : ILinkable
         {
             var entity = world.NewEntity();
-            entity.Get<UIdComponent>().Value = UidGenerator.Next();
+            entity.Get<UidComponent>().Value = UidGenerator.Next();
             entity.Get<MonoLinkComponent<TV>>().View = link;
             entity.Get<OwnerComponent>().Value = parentUid;
             entity.Get<EventAddComponent<MonoLinkComponent<TV>>>();

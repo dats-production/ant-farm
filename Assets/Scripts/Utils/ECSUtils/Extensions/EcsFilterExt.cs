@@ -98,7 +98,7 @@ public static class EcsFilterExt
         return false;
     }
     
-    public static bool TryGetParentOf(this EcsFilter<UIdComponent> filter, EcsEntity childEntity, out EcsEntity parent)
+    public static bool TryGetParentOf(this EcsFilter<UidComponent> filter, EcsEntity childEntity, out EcsEntity parent)
     {
         if (!childEntity.Has<OwnerComponent>())
         {
@@ -119,7 +119,7 @@ public static class EcsFilterExt
         return false;
     }
         
-    public static bool TryGetParentOf<T>(this EcsFilter<UIdComponent, T> filter, EcsEntity childEntity, out EcsEntity parent)
+    public static bool TryGetParentOf<T>(this EcsFilter<UidComponent, T> filter, EcsEntity childEntity, out EcsEntity parent)
         where T : struct
     {
         if (!childEntity.Has<OwnerComponent>())
@@ -141,7 +141,7 @@ public static class EcsFilterExt
         return false;
     }
         
-    public static bool TryGetParentOf<T, T2>(this EcsFilter<UIdComponent, T, T2> filter, EcsEntity childEntity, out EcsEntity parent)
+    public static bool TryGetParentOf<T, T2>(this EcsFilter<UidComponent, T, T2> filter, EcsEntity childEntity, out EcsEntity parent)
         where T : struct
         where T2 : struct
     {
@@ -164,7 +164,7 @@ public static class EcsFilterExt
         return false;
     }
         
-    public static bool TryGetParentOf<T, T2, T3>(this EcsFilter<UIdComponent, T, T2, T3> filter, EcsEntity childEntity, out EcsEntity parent)
+    public static bool TryGetParentOf<T, T2, T3>(this EcsFilter<UidComponent, T, T2, T3> filter, EcsEntity childEntity, out EcsEntity parent)
         where T : struct
         where T2 : struct
         where T3 : struct

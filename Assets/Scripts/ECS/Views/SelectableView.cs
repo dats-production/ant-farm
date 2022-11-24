@@ -1,22 +1,20 @@
 ﻿using System;
-using Leopotam.Ecs;
-using UnityEngine;
-using UnityEngine.EventSystems;
+using DataBase;
 
 namespace ECS.Views
 {
     public interface ISelectable
     {
-        void SetMouseDownAction(EcsEntity selectedEntity, Action<EcsEntity> mouseDownAction);
+        void SetMouseDownAction(Uid selectedUid, Action<Uid> mouseDownAction);
     }
     public class SelectableView : LinkableView, ISelectable
     {
-        private Action<EcsEntity> _mouseDownAction;
-        private EcsEntity _selectedEntity;
+        private Action<Uid> _mouseDownAction;
+        private Uid _selectedUid;
 
-        public void SetMouseDownAction(EcsEntity selectedEntity, Action<EcsEntity> mouseDownAction)
+        public void SetMouseDownAction(Uid selectedUid, Action<Uid> mouseDownAction)
         {
-            _selectedEntity = selectedEntity;
+            _selectedUid = selectedUid;
             _mouseDownAction = mouseDownAction;
         }
         
@@ -35,7 +33,7 @@ namespace ECS.Views
 
         private void OnMouseDown()
         {
-            _mouseDownAction.Invoke(_selectedEntity);
+            _mouseDownAction?.Invoke(_selectedUid);
         }
     }
 }

@@ -17,21 +17,23 @@ namespace ECS.Systems
     public class SelectSystem : ReactiveSystem<EventAddComponent<SelectableComponent>>
     {
         [Inject] private SignalBus _signalBus;
-
+        private readonly EcsWorld _world;
         private readonly EcsFilter<AntComponent> _ants;
         protected override EcsFilter<EventAddComponent<SelectableComponent>> ReactiveFilter { get; }
         protected override void Execute(EcsEntity entity)
         {
             var view = entity.Get<SelectableComponent>().View;
-            view.SetMouseDownAction(entity, OnMouseDown);
+            var uid = entity.Get<UidComponent>().Value;
+            view.SetMouseDownAction(uid, OnMouseDown);
         }
 
-        private void OnMouseDown(EcsEntity selectedEntity)
+        private void OnMouseDown(Uid uid)
         {
+            var selectedEntity = _world.GetEntityWithUid(uid);
             if(selectedEntity.Has<GatherableComponent>())
             {
                 _signalBus.OpenWindow<GatherWindow>();
-                var selectedUid = selectedEntity.Get<UIdComponent>().Value;
+                var selectedUid = selectedEntity.Get<UidComponent>().Value;
                 _signalBus.Fire(new SignalSelect(selectedUid, OnGather));
             }
             else if (selectedEntity.Has<WarehouseComponent>())

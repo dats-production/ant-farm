@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using Leopotam.Ecs;
 using UnityEngine;
 using UnityEngine.UI;
@@ -13,8 +14,9 @@ namespace ECS.Views
     {
         public Transform menu;
         public Button gatherButton;
-        public Transform chunksContainer;
-        public ChunkView chunkPrefab;
+        [SerializeField] private Transform chunksContainer;
+        [SerializeField] private ChunkView chunkPrefab;
+        
         private List<ChunkView> chunks = new ();
         
         public override void Link(EcsEntity entity)
@@ -40,22 +42,37 @@ namespace ECS.Views
             closetChunk?.gameObject.SetActive(false);
         }
 
-        private void Build(int countPerRow)
+        private void Build(int row)
         {
             var chunkSize = chunkPrefab.transform.localScale.x;
-            var offset = (countPerRow - 1) * chunkSize / 2;
-            for (var y = 0; y < countPerRow; y++)
+            var offset = (row - 1) * chunkSize / 2;
+            var radius = row * chunkSize / 2;
+            var center = new Vector3(
+                transform.position.x,
+                transform.position.y + radius,
+                transform.position.z);
+            for (var y = 0; y < row; y++)
             {
-                for (var x = 0; x < countPerRow; x++)
+                for (var x = 0; x < row; x++)
                 {
-                    for (var z = 0; z < countPerRow; z++)
+                    for (var z = 0; z < row; z++)
                     {
                         var chunk = Instantiate(chunkPrefab, chunksContainer);
-                        chunks.Add(chunk);
                         chunk.transform.localPosition = new Vector3(
                             x * chunkSize - offset,
                             y * chunkSize, 
                             z * chunkSize - offset);
+                        
+                        var distanceFromCenter = (chunk.transform.position - center).sqrMagnitude;
+                        if (distanceFromCenter < radius)
+                        {
+                            chunk.gameObject.SetActive(true);
+                            chunks.Add(chunk);
+                        }
+                        else
+                        {
+                            chunk.gameObject.SetActive(false);
+                        }                        
                     }
                 }
             }

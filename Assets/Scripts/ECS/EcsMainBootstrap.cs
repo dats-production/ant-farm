@@ -36,7 +36,7 @@ namespace ECS
             Leopotam.Ecs.UnityIntegration.EcsWorldObserver.Create (_world);
 #endif
             //Create filters for use out of systems
-            _world.GetFilter(typeof(EcsFilter<UIdComponent>));
+            _world.GetFilter(typeof(EcsFilter<UidComponent>));
             
             _initUpdateSystems?.Init();
         }
