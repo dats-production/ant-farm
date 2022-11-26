@@ -9,14 +9,14 @@ using Services.Uid;
 
 public class AddPoolMembersSystem : IEcsUpdateSystem
 {
-    private EcsFilter<AntComponent, IsAvailableComponent> _ants;
-    private EcsFilter<ChunkComponent, IsAvailableComponent> _chunks;
+    private EcsFilter<AntComponent>.Exclude<IsActiveComponent> _ants;
+    private EcsFilter<ChunkComponent>.Exclude<IsActiveComponent> _chunks;
 
     private readonly EcsFilter<GameStageComponent> _gameStage;
     private readonly EcsWorld _world;
 
     private int startAntCount = 5;
-    private int startChunkCount = 300;
+    private int startChunkCount = 150;
 
     private int countPerAdd = 10;
 
@@ -38,7 +38,6 @@ public class AddPoolMembersSystem : IEcsUpdateSystem
             entity.Get<UidComponent>().Value = UidGenerator.Next();
             entity.Get<IsAvailableListenerComponent>();
             entity.GetAndFire<PrefabComponent>().Value = name;
-            entity.GetAndFire<IsAvailableComponent>();
         }
         //Debug.Log($"ADDED {name}. Available: {_world.GetFilter(typeof(EcsFilter<T, IsAvailableComponent>)).GetEntitiesCount()}. All: {_world.GetFilter(typeof(EcsFilter<T>)).GetEntitiesCount()}");
     }

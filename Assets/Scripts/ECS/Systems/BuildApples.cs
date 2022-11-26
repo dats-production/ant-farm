@@ -16,7 +16,7 @@ namespace ECS.Systems
 {
     public class BuildApples : ReactiveSystem<EventAddComponent<AppleComponent>>
     {
-        private readonly EcsFilter<ChunkComponent, LinkComponent, IsAvailableComponent> _chunks;
+        private readonly EcsFilter<ChunkComponent, LinkComponent>.Exclude<IsActiveComponent> _chunks;
         private readonly EcsFilter<IsAvailableListenerComponent, LinkComponent> _listeners;
         protected override EcsFilter<EventAddComponent<AppleComponent>> ReactiveFilter { get; }
         
@@ -62,7 +62,7 @@ namespace ECS.Systems
                             chunkEntity.Get<FoodComponent>().Value = 1;
                             chunkEntity.Get<GatherableComponent>();
                             chunkEntity.Get<OwnerComponent>().Value = entity.Get<UidComponent>().Value;
-                            chunkEntity.DelAndFire<IsAvailableComponent>();
+                            chunkEntity.GetAndFire<IsActiveComponent>();
                         }
                         i++;
                     }

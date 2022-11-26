@@ -6,10 +6,10 @@ using Leopotam.Ecs;
 
 namespace ECS.Systems.Pool
 {
-    public class IsAvailableSetViewSystem : ReactiveSystem<EventAddComponent<IsAvailableComponent>, EventRemoveComponent<IsAvailableComponent>>
+    public class IsAvailableSetViewSystem : ReactiveSystem<EventAddComponent<IsActiveComponent>, EventRemoveComponent<IsActiveComponent>>
     {
-        protected override EcsFilter<EventAddComponent<IsAvailableComponent>> ReactiveFilter { get; }
-        protected override EcsFilter<EventRemoveComponent<IsAvailableComponent>> ReactiveFilter2 { get; }
+        protected override EcsFilter<EventAddComponent<IsActiveComponent>> ReactiveFilter { get; }
+        protected override EcsFilter<EventRemoveComponent<IsActiveComponent>> ReactiveFilter2 { get; }
         protected override void Execute(EcsEntity entity, bool added)
         {
             entity.Get<IsAvailableListenerComponent>().Value?.Invoke(added);

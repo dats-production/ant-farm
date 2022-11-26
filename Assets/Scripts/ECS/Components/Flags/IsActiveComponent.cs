@@ -2,7 +2,7 @@
 
 namespace ECS.Components.Flags
 {
-    public struct IsAvailableComponent : IEcsIgnoreInFilter
+    public struct IsActiveComponent : IEcsIgnoreInFilter
     {
 
     }

@@ -11,7 +11,7 @@ namespace ECS.Systems.Gather
 {
     public class GatherUpdateSystem : IEcsUpdateSystem
     {
-        private readonly EcsFilter<GatherComponent, MovableComponent>.Exclude<IsAvailableComponent> _gatheringEntities;
+        private readonly EcsFilter<GatherComponent, MovableComponent, IsActiveComponent> _gatheringEntities;
         private readonly EcsFilter<EnterComponent, PositionComponent> _enter;
         private readonly EcsFilter<ExitComponent, PositionComponent> _exit;
         private readonly EcsFilter<WarehouseComponent, PositionComponent> _warehouses;

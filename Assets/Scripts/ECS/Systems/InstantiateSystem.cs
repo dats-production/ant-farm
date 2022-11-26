@@ -32,15 +32,13 @@ namespace ECS.Systems
             
             if(linkable is IGatherable gatherable)
                 entity.Get<GatherableComponent>().View = gatherable;
-
-            if (entity.Has<IsAvailableListenerComponent>())
-            {   
-                var poolView = linkable as IPoolable;
-                poolView.SetParent();
-                entity.Get<IsAvailableListenerComponent>().Value += (x) =>
-                {
-                    poolView.EnableView(!x);
-                };
+            
+            if(linkable is IPoolable poolable)
+            {
+                poolable.EnableView(false);
+                poolable.SetParent();
+                entity.Get<IsAvailableListenerComponent>().Value +=
+                    (x) => { poolable.EnableView(x); };
             }
         }
     }
