@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace ECS.Views
 {
-    public class ChunkView : SelectableView, IPoolable, ISizable
+    public class ChunkView : SelectableView, IPoolMember, ISizable
     {
         [SerializeField] private MeshRenderer _meshRenderer;
 

@@ -10,7 +10,6 @@ using ECS.Views.Interfaces;
 using Leopotam.Ecs;
 using Services.SpawnService;
 using Zenject;
-using IPoolable = ECS.Views.Interfaces.IPoolable;
 
 namespace ECS.Systems
 {
@@ -33,7 +32,7 @@ namespace ECS.Systems
             if(linkable is IGatherable gatherable)
                 entity.Get<GatherableComponent>().View = gatherable;
             
-            if(linkable is IPoolable poolable)
+            if(linkable is IPoolMember poolable)
             {
                 poolable.EnableView(false);
                 poolable.SetParent();

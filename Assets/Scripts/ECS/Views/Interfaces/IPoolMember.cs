@@ -1,6 +1,6 @@
 ﻿namespace ECS.Views.Interfaces
 {
-	public interface IPoolable
+	public interface IPoolMember
 	{
 		void EnableView(bool enable);
 		void SetParent();

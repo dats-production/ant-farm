@@ -6,7 +6,7 @@ using UnityEngine.AI;
 
 namespace ECS.Views
 {
-    public class AntView : LinkableView, IMovable, IPoolable
+    public class AntView : LinkableView, IMovable, IPoolMember
     {
         [SerializeField] private NavMeshAgent agent;
 

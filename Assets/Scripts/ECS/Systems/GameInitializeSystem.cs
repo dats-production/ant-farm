@@ -74,7 +74,10 @@ namespace ECS.Systems
 
         private bool LoadGame()
         {
-            _world.NewEntity().Get<GameStageComponent>().Value = EGameStage.Pause;
+            var entity = _world.NewEntity();
+            entity.Get<GameStageComponent>().Value = EGameStage.Pause;
+            entity.Get<UidComponent>().Value = UidGenerator.Next();
+            _world.SetStage(EGameStage.Play);
             // var gState = _generalState.GetData();
             // if (gState.SaveState.IsNullOrEmpty()) return false;
             // foreach (var state in gState.SaveState)
