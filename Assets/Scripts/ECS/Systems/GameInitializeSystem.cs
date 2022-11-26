@@ -22,34 +22,24 @@ namespace ECS.Systems
         {
             if (LoadGame()) return;
             //CreateCamera();
-            CreateTimer();
-            CreateAnt(_antsCount);
-            CreateFood();
+            //CreateTimer();
+            CreateApple();
             CreateWarehouse();
             CreateExit();
             CreateEnter();
         }
 
-        private void CreateFood()
+        private void CreateApple()
         {
             var entity = _world.NewEntity();
-            entity.Get<FoodComponent>().Value = 100;
-            entity.Get<UidComponent>().Value = UidGenerator.Next();
-            entity.GetAndFire<PrefabComponent>().Value = "Food";
-            var point = _getPointFromScene.GetPoint("Food");
+            entity.GetAndFire<AppleComponent>();
+            var point = _getPointFromScene.GetPoint("Apple");
             entity.Get<PositionComponent>().Value = point.position;
-        }
-
-
-        private void CreateAnt(int count)
-        {
-            for (int i = 0; i < count; i++)
-            {
-                var entity = _world.NewEntity();
-                entity.Get<AntComponent>();
-                entity.Get<UidComponent>().Value = UidGenerator.Next();
-                entity.GetAndFire<PrefabComponent>().Value = "Ant";                
-            }
+            entity.Get<SizeComponent>().Value = 5;
+            entity.Get<UidComponent>().Value = UidGenerator.Next();
+            //entity.Get<GatherableComponent>();
+            //entity.Get<FoodComponent>().Value = 100;
+            //entity.GetAndFire<PrefabComponent>().Value = "Food";
         }
         
         private void CreateWarehouse()

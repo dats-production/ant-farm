@@ -1,6 +1,6 @@
 ﻿using Leopotam.Ecs;
 
-namespace ECS.Game.Components.Flags
+namespace ECS.Components.Flags
 {
     public struct IsAvailableComponent : IEcsIgnoreInFilter
     {

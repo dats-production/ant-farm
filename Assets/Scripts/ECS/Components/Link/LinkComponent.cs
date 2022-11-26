@@ -1,4 +1,5 @@
 ﻿using ECS.Views;
+using ECS.Views.Interfaces;
 
 namespace ECS.Components.Link
 {

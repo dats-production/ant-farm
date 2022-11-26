@@ -26,18 +26,21 @@ namespace Installers
 
         private void BindSystems()
         {
-            Container.BindInterfacesAndSelfTo<IsAvailableSetViewSystem>().AsSingle();
             Container.BindInterfacesAndSelfTo<GameInitializeSystem>().AsSingle();
+            Container.BindInterfacesAndSelfTo<AddPoolMembersSystem>().AsSingle();
             Container.BindInterfacesAndSelfTo<InstantiateSystem>().AsSingle();
             Container.BindInterfacesAndSelfTo<PositionRotationTranslateSystem>().AsSingle();
             Container.BindInterfacesAndSelfTo<GameTimerSystem>().AsSingle();
             Container.BindInterfacesAndSelfTo<GamePauseSystem>().AsSingle();
             //Container.BindInterfacesAndSelfTo<SaveGameSystem>().AsSingle();
+            Container.BindInterfacesAndSelfTo<IsAvailableSetViewSystem>().AsSingle();
             
+            Container.BindInterfacesAndSelfTo<StartGameSystem>().AsSingle();
             Container.BindInterfacesAndSelfTo<MoveSystem>().AsSingle();
             Container.BindInterfacesAndSelfTo<SelectSystem>().AsSingle();
             Container.BindInterfacesAndSelfTo<GatherSystem>().AsSingle();
             Container.BindInterfacesAndSelfTo<GatherUpdateSystem>().AsSingle();
+            Container.BindInterfacesAndSelfTo<BuildApples>().AsSingle();
 
             Container.BindInterfacesAndSelfTo<GameStageSystem>().AsSingle();        //always must been last
             Container.BindInterfacesAndSelfTo<CleanUpSystem>().AsSingle();          //must been latest than last!

@@ -118,6 +118,10 @@ MonoBehaviour:
     Key: Warehouse
   - Transform: {fileID: 0}
     Key: Exit
+  - Transform: {fileID: 0}
+    Key: Enter
+  - Transform: {fileID: 0}
+    Key: Apple
 --- !u!114 &5173217833134797874
 MonoBehaviour:
   m_ObjectHideFlags: 0

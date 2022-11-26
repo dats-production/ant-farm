@@ -1,16 +1,9 @@
-﻿using Leopotam.Ecs;
+﻿using ECS.Views.Interfaces;
+using Leopotam.Ecs;
 using UnityEngine;
 
 namespace ECS.Views
 {
-	public interface ILinkable
-	{
-		int Hash { get; }
-		Transform Transform { get; }
-		int UnityInstanceId { get; }
-		void Link(EcsEntity entity);
-	}
-	
 	public abstract class LinkableView : MonoBehaviour, ILinkable
 	{
 		protected EcsEntity Entity;

@@ -3,6 +3,7 @@ using DataBase;
 using ECS.Components;
 using ECS.Utils;
 using ECS.Views;
+using ECS.Views.Interfaces;
 using Leopotam.Ecs;
 using UnityEngine;
 using Zenject;

@@ -418,7 +418,7 @@ GameObject:
   m_Component:
   - component: {fileID: 730311570}
   m_Layer: 0
-  m_Name: Food
+  m_Name: Apple
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -812,18 +812,6 @@ PrefabInstance:
     - target: {fileID: 4776110520569494985, guid: 358630096f4c95549aa0b193f5dd898b, type: 3}
       propertyPath: m_Name
       value: SceneContext
-      objectReference: {fileID: 0}
-    - target: {fileID: 7305691077544587321, guid: 358630096f4c95549aa0b193f5dd898b, type: 3}
-      propertyPath: points.Array.size
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 7305691077544587321, guid: 358630096f4c95549aa0b193f5dd898b, type: 3}
-      propertyPath: points.Array.data[2].Key
-      value: Enter
-      objectReference: {fileID: 0}
-    - target: {fileID: 7305691077544587321, guid: 358630096f4c95549aa0b193f5dd898b, type: 3}
-      propertyPath: points.Array.data[3].Key
-      value: Food
       objectReference: {fileID: 0}
     - target: {fileID: 7305691077544587321, guid: 358630096f4c95549aa0b193f5dd898b, type: 3}
       propertyPath: points.Array.data[0].Transform

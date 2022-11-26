@@ -3,11 +3,14 @@ using ECS.Components.Flags;
 using ECS.Components.Link;
 using ECS.Core.Utils.ReactiveSystem;
 using ECS.Core.Utils.ReactiveSystem.Components;
+using ECS.Game.Components.Listeners.Impl;
 using ECS.Utils.Extensions;
 using ECS.Views;
+using ECS.Views.Interfaces;
 using Leopotam.Ecs;
 using Services.SpawnService;
 using Zenject;
+using IPoolable = ECS.Views.Interfaces.IPoolable;
 
 namespace ECS.Systems
 {
@@ -29,6 +32,15 @@ namespace ECS.Systems
             
             if(linkable is IGatherable gatherable)
                 entity.Get<GatherableComponent>().View = gatherable;
+
+            if (entity.Has<IsAvailableListenerComponent>())
+            {   
+                var poolView = linkable as IPoolable;
+                entity.Get<IsAvailableListenerComponent>().Value += (x) =>
+                {
+                    poolView.EnableView(!x);
+                };
+            }
         }
     }
 }

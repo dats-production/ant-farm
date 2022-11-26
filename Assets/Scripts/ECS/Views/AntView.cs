@@ -1,4 +1,4 @@
-﻿using System;
+﻿using ECS.Views.Interfaces;
 using Leopotam.Ecs;
 using UnityEngine;
 using UnityEngine.AI;
@@ -11,7 +11,7 @@ namespace ECS.Views
         bool IsDestinationReached();
     }
     
-    public class AntView : LinkableView, IMovable
+    public class AntView : LinkableView, IMovable, IPoolable
     {
         [SerializeField] private NavMeshAgent agent;
 
@@ -27,7 +27,6 @@ namespace ECS.Views
 
         public void SetDestination(Vector3 point)
         {
-
             agent.SetDestination(point);
         }
 
@@ -44,6 +43,11 @@ namespace ECS.Views
             if (!agent.hasPath) return false;
             agent.ResetPath();
             return true;
+        }
+
+        public void EnableView(bool enable)
+        {
+            gameObject.SetActive(enable);
         }
     }
 }

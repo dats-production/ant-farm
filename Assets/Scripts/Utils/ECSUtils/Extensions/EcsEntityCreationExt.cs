@@ -5,6 +5,7 @@ using ECS.Core.Utils.ReactiveSystem.Components;
 using ECS.Core.Utils.SystemInterfaces;
 using ECS.Game.Components;
 using ECS.Views;
+using ECS.Views.Interfaces;
 using Leopotam.Ecs;
 using Services.Uid;
 

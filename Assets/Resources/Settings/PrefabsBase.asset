@@ -23,3 +23,5 @@ MonoBehaviour:
     GameObject: {fileID: 6053897246803577485, guid: 0c5021067a7dfd145a5dcebbe8162d56, type: 3}
   - Name: Food
     GameObject: {fileID: 6053897246803577485, guid: 293c3f6ef0eedfb43b6c1446f21582c5, type: 3}
+  - Name: Chunk
+    GameObject: {fileID: 3929275744734886370, guid: f6002a3477c211048813c0c45d5a1a97, type: 3}
