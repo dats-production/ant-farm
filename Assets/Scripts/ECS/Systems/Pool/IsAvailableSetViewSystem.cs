@@ -1,12 +1,10 @@
 ﻿using ECS.Components.Flags;
 using ECS.Core.Utils.ReactiveSystem;
 using ECS.Core.Utils.ReactiveSystem.Components;
-using ECS.Game.Components.Flags;
 using ECS.Game.Components.Listeners.Impl;
 using Leopotam.Ecs;
-using UnityEngine;
 
-namespace ECS.Systems.Linked
+namespace ECS.Systems.Pool
 {
     public class IsAvailableSetViewSystem : ReactiveSystem<EventAddComponent<IsAvailableComponent>, EventRemoveComponent<IsAvailableComponent>>
     {

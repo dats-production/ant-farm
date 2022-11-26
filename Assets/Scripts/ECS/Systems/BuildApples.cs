@@ -1,4 +1,6 @@
-﻿using ECS.Components;
+﻿using System.Collections.Generic;
+using DataBase;
+using ECS.Components;
 using ECS.Components.Flags;
 using ECS.Components.Link;
 using ECS.Components.Resources;
@@ -18,9 +20,10 @@ namespace ECS.Systems
         private readonly EcsFilter<IsAvailableListenerComponent, LinkComponent> _listeners;
         protected override EcsFilter<EventAddComponent<AppleComponent>> ReactiveFilter { get; }
         
-        private readonly float chunkSize = 1f;
+        private readonly float chunkSize = 0.5f;
         protected override void Execute(EcsEntity entity)
         {
+            entity.Get<ContainerComponent>().Children = new List<Uid>();
             ref var applePos = ref entity.Get<PositionComponent>().Value;
             applePos.y += chunkSize / 2;
             var row = (int)entity.Get<SizeComponent>().Value;
@@ -39,11 +42,7 @@ namespace ECS.Systems
                     for (var z = 0; z < row; z++)
                     {
                         var chunkEntity = _chunks.GetEntity(i);
-                        chunkEntity.Get<SizeComponent>().Value = chunkSize;
                         
-                        var chunkView = _chunks.Get2(i).View as ISizable;
-                        chunkView.SetSize(chunkSize);
-
                         ref var chunkPos = ref chunkEntity.Get<PositionComponent>().Value;
                         chunkPos = new Vector3(
                             x * chunkSize - offset,
@@ -53,13 +52,22 @@ namespace ECS.Systems
                         
                         var distanceFromCenter = (chunkPos - center).sqrMagnitude;
                         if (distanceFromCenter < Mathf.Pow(radius, 2))
+                        {
+                            var chunkView = _chunks.Get2(i).View as ISizable;
+                            chunkView.SetSize(chunkSize);
+                            
+                            var chunkUid = chunkEntity.Get<UidComponent>().Value;
+                            entity.Get<ContainerComponent>().Children.Add(chunkUid);
+                            
+                            chunkEntity.Get<FoodComponent>().Value = 1;
+                            chunkEntity.Get<GatherableComponent>();
+                            chunkEntity.Get<OwnerComponent>().Value = entity.Get<UidComponent>().Value;
                             chunkEntity.DelAndFire<IsAvailableComponent>();
+                        }
                         i++;
                     }
                 }
             }
-
-            
         }
     }
 }

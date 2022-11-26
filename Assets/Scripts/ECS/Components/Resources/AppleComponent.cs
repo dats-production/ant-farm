@@ -1,4 +1,5 @@
-﻿using Leopotam.Ecs;
+﻿using DataBase;
+using Leopotam.Ecs;
 
 namespace ECS.Components.Resources
 {

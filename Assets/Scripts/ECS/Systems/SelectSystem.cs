@@ -24,7 +24,7 @@ namespace ECS.Systems
         {
             var view = entity.Get<SelectableComponent>().View;
             var uid = entity.Get<UidComponent>().Value;
-            view.SetMouseDownAction(uid, OnMouseDown);
+            view.SetMouseDownAction(OnMouseDown);
         }
 
         private void OnMouseDown(Uid uid)
@@ -33,8 +33,7 @@ namespace ECS.Systems
             if(selectedEntity.Has<GatherableComponent>())
             {
                 _signalBus.OpenWindow<GatherWindow>();
-                var selectedUid = selectedEntity.Get<UidComponent>().Value;
-                _signalBus.Fire(new SignalSelect(selectedUid, OnGather));
+                _signalBus.Fire(new SignalSelect(uid, OnGather));
             }
             else if (selectedEntity.Has<WarehouseComponent>())
             {

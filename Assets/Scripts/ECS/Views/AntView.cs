@@ -1,24 +1,22 @@
-﻿using ECS.Views.Interfaces;
+﻿using ECS.Components;
+using ECS.Views.Interfaces;
 using Leopotam.Ecs;
 using UnityEngine;
 using UnityEngine.AI;
 
 namespace ECS.Views
 {
-    public interface IMovable
-    {
-        void SetDestination(Vector3 point);
-        bool IsDestinationReached();
-    }
-    
     public class AntView : LinkableView, IMovable, IPoolable
     {
         [SerializeField] private NavMeshAgent agent;
 
-
         public override void Link(EcsEntity entity)
         {
             base.Link(entity);
+            var hashCode = entity.Get<UidComponent>().Value.GetHashCode();
+            var name = GetType().Name.Remove(3) + " #" + hashCode;
+            gameObject.name = name;
+            
             agent.speed = 15;
             agent.stoppingDistance = 3;
             agent.acceleration = 100;
@@ -48,6 +46,12 @@ namespace ECS.Views
         public void EnableView(bool enable)
         {
             gameObject.SetActive(enable);
+        }
+
+        public void SetParent()
+        {
+            var name = $"[{GetType().Name.Remove(3)}s]";
+            transform.SetParent(GameObject.Find(name).transform);
         }
     }
 }

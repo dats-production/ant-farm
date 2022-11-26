@@ -6,13 +6,11 @@ using ECS.Components.Flags;
 using ECS.Components.Link;
 using ECS.Components.Resources;
 using ECS.Core.Utils.ReactiveSystem;
-using ECS.Core.Utils.ReactiveSystem.Components;
-using ECS.Game.Components;
 using ECS.Utils.Extensions;
 using Leopotam.Ecs;
 using UnityEngine;
 
-namespace ECS.Systems
+namespace ECS.Systems.Gather
 {
     public class GatherSystem : ReactiveSystem<ChangeGatherStageComponent>
     {

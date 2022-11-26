@@ -1,4 +1,6 @@
-﻿using ECS.Views.Interfaces;
+﻿using ECS.Components;
+using ECS.Views.Interfaces;
+using Leopotam.Ecs;
 using UnityEngine;
 
 namespace ECS.Views
@@ -6,6 +8,14 @@ namespace ECS.Views
     public class ChunkView : SelectableView, IPoolable, ISizable
     {
         [SerializeField] private MeshRenderer _meshRenderer;
+
+        public override void Link(EcsEntity entity)
+        {
+            base.Link(entity);
+            var hashCode = entity.Get<UidComponent>().Value.GetHashCode();
+            var name = GetType().Name.Remove(5) + " #" + hashCode;
+            gameObject.name = name;
+        }
 
         public void SetColor(Color color)
         {
@@ -15,6 +25,12 @@ namespace ECS.Views
         public void EnableView(bool enable)
         {
             gameObject.SetActive(enable);
+        }
+
+        public void SetParent()
+        {
+            var name = $"[{GetType().Name.Remove(5)}s]";
+            transform.SetParent(GameObject.Find(name).transform);
         }
 
         public void SetSize(float size)

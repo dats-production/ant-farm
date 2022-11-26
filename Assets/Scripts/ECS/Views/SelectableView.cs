@@ -1,21 +1,26 @@
 ﻿using System;
 using DataBase;
+using ECS.Components;
+using Leopotam.Ecs;
 
 namespace ECS.Views
 {
     public interface ISelectable
     {
-        void SetMouseDownAction(Uid selectedUid, Action<Uid> mouseDownAction);
+        void SetMouseDownAction(Action<Uid> mouseDownAction);
     }
     public class SelectableView : LinkableView, ISelectable
     {
         private Action<Uid> _mouseDownAction;
-        private Uid _selectedUid;
 
-        public void SetMouseDownAction(Uid selectedUid, Action<Uid> mouseDownAction)
+        public void SetMouseDownAction(Action<Uid> mouseDownAction)
         {
-            _selectedUid = selectedUid;
             _mouseDownAction = mouseDownAction;
+        }
+        
+        protected virtual void OnMouseDown()
+        {
+            _mouseDownAction?.Invoke(Entity.Get<UidComponent>().Value);
         }
         
         // private void Update()
@@ -30,10 +35,5 @@ namespace ECS.Views
         //         }
         //     }
         // }
-
-        private void OnMouseDown()
-        {
-            _mouseDownAction?.Invoke(_selectedUid);
-        }
     }
 }

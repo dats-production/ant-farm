@@ -36,6 +36,7 @@ namespace ECS.Systems
             if (entity.Has<IsAvailableListenerComponent>())
             {   
                 var poolView = linkable as IPoolable;
+                poolView.SetParent();
                 entity.Get<IsAvailableListenerComponent>().Value += (x) =>
                 {
                     poolView.EnableView(!x);

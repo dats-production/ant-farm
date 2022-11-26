@@ -8,8 +8,8 @@ namespace ECS.Game.Systems.Linked
 {
     public class PositionRotationTranslateSystem : IEcsUpdateSystem
     {
-        private readonly EcsFilter<RotationComponent, LinkComponent> _viewsRot;
         private readonly EcsFilter<PositionComponent, LinkComponent> _viewsPos;
+        private readonly EcsFilter<RotationComponent, LinkComponent> _viewsRot;
         public void Run()
         {
             foreach (var i in _viewsPos)
@@ -17,12 +17,14 @@ namespace ECS.Game.Systems.Linked
                 ref var pos = ref _viewsPos.Get1(i).Value;
                 var transform = _viewsPos.Get2(i).View.Transform;
                 transform.position = pos;
+                _viewsPos.GetEntity(i).Del<PositionComponent>();
             }
             foreach (var i in _viewsRot)
             {
                 ref var rot = ref _viewsRot.Get1(i).Value;
                 var transform = _viewsRot.Get2(i).View.Transform;
                 transform.rotation = rot;
+                _viewsPos.GetEntity(i).Del<RotationComponent>();
             }
         }
     }
