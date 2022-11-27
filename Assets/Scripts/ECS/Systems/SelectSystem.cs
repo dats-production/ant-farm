@@ -2,6 +2,7 @@
 using ECS.Components;
 using ECS.Components.Flags;
 using ECS.Components.Link;
+using ECS.Components.Resources;
 using ECS.Core.Utils.ReactiveSystem;
 using ECS.Core.Utils.ReactiveSystem.Components;
 using ECS.Utils.Extensions;
@@ -9,7 +10,9 @@ using Leopotam.Ecs;
 using Signals;
 using SimpleUi.Signals;
 using UI.Gather;
+using UI.GatherWorld;
 using UI.Warehouse;
+using UnityEngine;
 using Zenject;
 
 namespace ECS.Systems
@@ -29,10 +32,13 @@ namespace ECS.Systems
 
         private void OnMouseDown(Uid uid)
         {
+            _signalBus.BackWindow();
             var selectedEntity = _world.GetEntityWithUid(uid);
             if(selectedEntity.Has<GatherableComponent>())
             {
                 _signalBus.OpenWindow<GatherWindow>();
+                //var ownerPos = _world.GetOwnerEntity(selectedEntity).Get<PositionComponent>().Value;
+                //_signalBus.Fire(new SignalSetPosition(ownerPos));
                 _signalBus.Fire(new SignalSelect(uid, OnGather));
             }
             else if (selectedEntity.Has<WarehouseComponent>())

@@ -1,4 +1,5 @@
 using SimpleUi.Abstracts;
+using SimpleUi.Signals;
 using UniRx;
 using UnityEngine;
 using Zenject;
@@ -16,8 +17,8 @@ namespace UI.GameHud
 
         public void Initialize()
         {
-            View.testButton.OnClickAsObservable()
-                .Subscribe(x => Debug.Log(222))
+            View.closeButton.OnClickAsObservable()
+                .Subscribe(x => _signalBus.BackWindow())
                 .AddTo(View);
         }
     }

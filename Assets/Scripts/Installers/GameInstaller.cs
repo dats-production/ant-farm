@@ -3,6 +3,7 @@ using Services.PauseService.Impls;
 using Services.SpawnService;
 using UI.GameHud;
 using UI.Gather;
+using UI.GatherWorld;
 using UI.Warehouse;
 using Zenject;
 
@@ -23,6 +24,7 @@ namespace Installers
             Container.BindInterfacesAndSelfTo<GameHudWindow>().AsSingle();
             Container.BindInterfacesAndSelfTo<GatherWindow>().AsSingle();
             Container.BindInterfacesAndSelfTo<WarehouseWindow>().AsSingle();
+            Container.BindInterfacesAndSelfTo<GatherWorldWindow>().AsSingle();
         }
 
         private void BindServices()

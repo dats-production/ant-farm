@@ -6,7 +6,7 @@ namespace UI.GameHud
 {
     public class GameHudView : UiView
     {
-        public Button testButton;
+        public Button closeButton;
         public TMP_Text testText;
     }
 }

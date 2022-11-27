@@ -1,6 +1,8 @@
 using SimpleUi.Abstracts;
 using SimpleUi.Signals;
 using UniRx;
+using UniRx.Triggers;
+using UnityEngine;
 using Zenject;
 
 namespace UI.Warehouse 
@@ -14,6 +16,12 @@ namespace UI.Warehouse
             _signalBus = signalBus;
         }
 
+        public override void OnShow()
+        {
+            base.OnShow();
+            //Debug.Log($"SHOW {nameof(WarehouseViewController)}");
+        }
+
         public void Initialize()
         {
             View.closeButton.OnClickAsObservable().Subscribe(Hide).AddTo(View);
@@ -21,6 +29,7 @@ namespace UI.Warehouse
         
         private void Hide(Unit _)
         {
+            //Debug.Log($"HIDE {nameof(WarehouseViewController)}");
             // View.panel.DOAnchorPosX(400, _animationTime)
             //     .SetEase(Ease.InCubic)
             //     .OnComplete(() => _signalBus.BackWindow());

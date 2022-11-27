@@ -50,5 +50,13 @@ namespace ECS.Utils.Extensions
         {
             entity.Get<ChangeGatherStageComponent>().Stage = stage;
         }
+        
+        public static EcsEntity GetOwnerEntity(this EcsWorld world, EcsEntity entity)
+        {
+            if(!entity.Has<OwnerComponent>()) return EcsEntity.Null;
+            var ownerUid = entity.Get<OwnerComponent>().Value;
+            var ownerEntity = world.GetEntityWithUid(ownerUid);
+            return ownerEntity;
+        }
     }
 }

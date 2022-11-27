@@ -9,6 +9,7 @@ namespace Installers
         {
             Container.DeclareSignal<SignalSelect>();
             Container.DeclareSignal<SignalGather>();
+            Container.DeclareSignal<SignalSetPosition>();
         }
     }
 }

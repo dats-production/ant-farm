@@ -27,7 +27,6 @@ namespace ECS.Utils.Extensions
             return filter.GetEntity(0);
         }
 
-
         public static EcsEntity GetEntityWithUid(this EcsWorld world, Uid uid)
         {
             var value = new EcsEntity();

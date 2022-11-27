@@ -27,7 +27,7 @@ namespace Installers
             camera.orthographic = false;
             camera.transform.SetParent(null);
 
-            Container.Bind<Canvas>().FromInstance(canvasObj).AsSingle().NonLazy();
+            Container.Bind<Canvas>().FromInstance(canvasObj).NonLazy();
             Container.Bind<Camera>().FromInstance(camera).AsSingle().WithConcreteId(0).NonLazy();
 
             Container.BindUiView<GameHudViewController, GameHudView>(inGameMenu, canvasTransform);
