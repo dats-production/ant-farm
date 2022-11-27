@@ -154,6 +154,17 @@ Transform:
   m_Father: {fileID: 1671349354}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &479825639 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4342502148964331238, guid: 358630096f4c95549aa0b193f5dd898b, type: 3}
+  m_PrefabInstance: {fileID: 2215158598662796286}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d19302416b4b4649a51151febbe542d0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &670008232
 GameObject:
   m_ObjectHideFlags: 0
@@ -904,6 +915,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3772752833094632257, guid: 358630096f4c95549aa0b193f5dd898b, type: 3}
+      propertyPath: _monoInstallers.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 3772752833094632257, guid: 358630096f4c95549aa0b193f5dd898b, type: 3}
+      propertyPath: _monoInstallers.Array.data[4]
+      value: 
+      objectReference: {fileID: 479825639}
     - target: {fileID: 4776110520569494985, guid: 358630096f4c95549aa0b193f5dd898b, type: 3}
       propertyPath: m_Name
       value: SceneContext

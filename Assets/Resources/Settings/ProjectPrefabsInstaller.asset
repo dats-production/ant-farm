@@ -13,3 +13,4 @@ MonoBehaviour:
   m_Name: ProjectPrefabsInstaller
   m_EditorClassIdentifier: 
   prefabBase: {fileID: 11400000, guid: f4ba8df640e2ebd4cbb3302b55590847, type: 2}
+  gameConfig: {fileID: 11400000, guid: 2359a831d7f5d0c48805b92c89f108ca, type: 2}
