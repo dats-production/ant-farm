@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using DataBase;
+using DataBase.Config;
 using ECS.Components;
 using ECS.Components.Flags;
 using ECS.Components.Link;
@@ -11,20 +12,22 @@ using ECS.Utils.Extensions;
 using ECS.Views.Interfaces;
 using Leopotam.Ecs;
 using UnityEngine;
+using Zenject;
 
 namespace ECS.Systems
 {
     public class BuildApples : ReactiveSystem<EventAddComponent<AppleComponent>>
     {
+        [Inject] private IGameConfig _gameConfig;
         private readonly EcsFilter<ChunkComponent, LinkComponent>.Exclude<IsActiveComponent> _chunks;
         private readonly EcsFilter<IsAvailableListenerComponent, LinkComponent> _listeners;
         protected override EcsFilter<EventAddComponent<AppleComponent>> ReactiveFilter { get; }
-        
-        private readonly float chunkSize = 0.5f;
+
         protected override void Execute(EcsEntity entity)
         {
             entity.Get<ContainerComponent>().Children = new List<Uid>();
             ref var applePos = ref entity.Get<PositionComponent>().Value;
+            var chunkSize = _gameConfig.ChunkConfig.size;
             applePos.y += chunkSize / 2;
             var row = (int)entity.Get<SizeComponent>().Value;
             var offset = (row - 1) * chunkSize / 2;

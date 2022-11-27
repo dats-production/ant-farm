@@ -1,21 +1,24 @@
-﻿using ECS.Components.Events;
+﻿using DataBase.Config;
+using ECS.Components.Events;
 using ECS.Components.Flags;
 using ECS.Components.Link;
 using ECS.Core.Utils.ReactiveSystem;
 using ECS.Views.Interfaces;
 using Leopotam.Ecs;
+using Zenject;
 
 namespace ECS.Systems
 {
     public class StartGameSystem : ReactiveSystem<ChangeStageComponent>
     {
+        [Inject] private IGameConfig _gameConfig;
         private readonly EcsFilter<AntComponent, LinkComponent>.Exclude<IsActiveComponent> _ants;
         protected override EcsFilter<ChangeStageComponent> ReactiveFilter { get; }
         protected override bool DeleteEvent => false;
         protected override void Execute(EcsEntity entity)
         {
             //if(entity.Get<ChangeStageComponent>().Value != EGameStage.Play) return;
-            var startAntCount = 3;
+            var startAntCount = _gameConfig.AntConfig.startAntCount;
 
             for (var i = 0; i < startAntCount; i++)
             {

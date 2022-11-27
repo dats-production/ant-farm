@@ -1,4 +1,5 @@
 ﻿using DataBase;
+using DataBase.Config;
 using ECS.Components;
 using ECS.Components.Flags;
 using ECS.Components.Resources;
@@ -13,6 +14,7 @@ namespace ECS.Systems
 {
     public class GameInitializeSystem : IEcsInitSystem
     {
+        [Inject] private IGameConfig _gameConfig;
         //[Inject] private readonly IGameStateService<GameState> _generalState;
         [Inject] private readonly GetPointFromScene _getPointFromScene;
         private readonly int _antsCount = 6;
@@ -35,7 +37,8 @@ namespace ECS.Systems
             entity.GetAndFire<AppleComponent>();
             var point = _getPointFromScene.GetPoint("Apple");
             entity.Get<PositionComponent>().Value = point.position;
-            entity.Get<SizeComponent>().Value = 5;
+            var size = _gameConfig.AppleConfig.size;
+            entity.Get<SizeComponent>().Value = size;
             entity.Get<UidComponent>().Value = UidGenerator.Next();
             //entity.Get<GatherableComponent>();
             //entity.Get<FoodComponent>().Value = 100;

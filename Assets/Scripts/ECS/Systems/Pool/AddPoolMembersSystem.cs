@@ -1,4 +1,5 @@
-﻿using ECS.Components;
+﻿using DataBase.Config;
+using ECS.Components;
 using ECS.Components.Flags;
 using ECS.Components.Resources;
 using ECS.Core.Utils.SystemInterfaces;
@@ -6,19 +7,28 @@ using ECS.Game.Components.Listeners.Impl;
 using ECS.Utils.Extensions;
 using Leopotam.Ecs;
 using Services.Uid;
+using UnityEngine;
+using Zenject;
 
-public class AddPoolMembersSystem : IEcsUpdateSystem
+public class AddPoolMembersSystem : IEcsUpdateSystem, IInitializable
 {
+    [Inject] private IGameConfig _gameConfig;
     private EcsFilter<AntComponent>.Exclude<IsActiveComponent> _ants;
     private EcsFilter<ChunkComponent>.Exclude<IsActiveComponent> _chunks;
 
     private readonly EcsFilter<GameStageComponent> _gameStage;
     private readonly EcsWorld _world;
 
-    private int startAntCount = 5;
-    private int startChunkCount = 150;
+    private int startAntCount;
+    private int startChunkCount;
+    private int countPerAdd;
 
-    private int countPerAdd = 10;
+    public void Initialize()
+    {
+        startAntCount = _gameConfig.PoolConfig.antCount;
+        startChunkCount = (int)Mathf.Pow(_gameConfig.AppleConfig.size, 3) + 1;
+        countPerAdd = _gameConfig.PoolConfig.countPerAdd;
+    }
 
     public void Run()
     {

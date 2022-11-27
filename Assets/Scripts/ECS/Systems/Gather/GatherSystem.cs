@@ -23,7 +23,7 @@ namespace ECS.Systems.Gather
         {
             var stage = entity.Get<ChangeGatherStageComponent>().Stage;
             entity.Get<GatherComponent>().Stage = stage;
-            //Debug.Log(entity.Get<GatherComponent>().Stage);
+            Debug.Log(entity.Get<GatherComponent>().Stage);
 
             if (stage != GatherStage.Gather) return;
             await WaitForSeconds(3);
