@@ -1,8 +1,5 @@
 ﻿using SimpleUi;
-using UI.GameHud;
-using UI.Gather;
 using UI.GatherWorld;
-using UI.Warehouse;
 using UnityEngine;
 using UnityEngine.Serialization;
 using Zenject;

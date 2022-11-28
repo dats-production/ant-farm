@@ -25,3 +25,5 @@ MonoBehaviour:
     GameObject: {fileID: 6053897246803577485, guid: 293c3f6ef0eedfb43b6c1446f21582c5, type: 3}
   - Name: Chunk
     GameObject: {fileID: 3929275744734886370, guid: f6002a3477c211048813c0c45d5a1a97, type: 3}
+  - Name: Floor
+    GameObject: {fileID: 4630261277537024775, guid: 29b9b0b563030404fba6087dac04fea1, type: 3}

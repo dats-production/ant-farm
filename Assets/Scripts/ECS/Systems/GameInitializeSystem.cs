@@ -3,10 +3,10 @@ using DataBase.Config;
 using ECS.Components;
 using ECS.Components.Flags;
 using ECS.Components.Resources;
-using ECS.Game.Components;
 using ECS.Utils.Extensions;
 using Leopotam.Ecs;
 using Services.Uid;
+using UnityEngine;
 using Utils.MonoBehUtils;
 using Zenject;
 
@@ -29,6 +29,15 @@ namespace ECS.Systems
             CreateWarehouse();
             CreateExit();
             CreateEnter();
+            CreateFloor();
+        }
+
+        private void CreateFloor()
+        {
+            var entity = _world.NewEntity();
+            entity.GetAndFire<PrefabComponent>().Value = "Floor";
+            entity.Get<PositionComponent>().Value = new Vector3(0, -0.5f, 0);
+            entity.Get<UidComponent>().Value = UidGenerator.Next();
         }
 
         private void CreateApple()
@@ -40,9 +49,6 @@ namespace ECS.Systems
             var size = _gameConfig.AppleConfig.size;
             entity.Get<SizeComponent>().Value = size;
             entity.Get<UidComponent>().Value = UidGenerator.Next();
-            //entity.Get<GatherableComponent>();
-            //entity.Get<FoodComponent>().Value = 100;
-            //entity.GetAndFire<PrefabComponent>().Value = "Food";
         }
         
         private void CreateWarehouse()

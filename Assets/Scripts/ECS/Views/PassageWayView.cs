@@ -1,6 +1,6 @@
 ﻿namespace ECS.Views
 {
-    public class PassageWayView : LinkableView
+    public class PassageWayView : SelectableView
     {
         
     }

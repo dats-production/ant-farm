@@ -5,9 +5,6 @@ using Signals;
 using SimpleUi.Abstracts;
 using SimpleUi.Signals;
 using UniRx;
-using UniRx.Triggers;
-using UnityEngine;
-using UnityEngine.EventSystems;
 using Zenject;
 
 namespace UI.Gather 
@@ -32,14 +29,8 @@ namespace UI.Gather
                 .AddTo(View);
         }
 
-        private void Test(PointerEventData eventData)
-        {
-            
-        }
-
         public override void OnShow()
         {
-            //Debug.Log($"SHOW {nameof(GatherViewController)}");
             View.name.text = "GATHER";
             // View.panel.DOAnchorPosX(-400, _animationTime)
             //     .SetEase(Ease.OutCubic);
@@ -54,7 +45,6 @@ namespace UI.Gather
         
         private void Hide(Unit _)
         {
-            //Debug.Log($"HIDE {nameof(GatherViewController)}");
             // View.panel.DOAnchorPosX(400, _animationTime)
             //     .SetEase(Ease.InCubic)
             //     .OnComplete(() => _signalBus.BackWindow());

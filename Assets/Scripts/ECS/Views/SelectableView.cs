@@ -2,7 +2,6 @@
 using DataBase;
 using ECS.Components;
 using Leopotam.Ecs;
-using UnityEngine;
 using UnityEngine.EventSystems;
 
 namespace ECS.Views
@@ -11,7 +10,7 @@ namespace ECS.Views
     {
         void SetMouseDownAction(Action<Uid> mouseDownAction);
     }
-    public class SelectableView : LinkableView, ISelectable, IPointerUpHandler
+    public class SelectableView : LinkableView, ISelectable, IPointerUpHandler, IPointerDownHandler
     {
         private Action<Uid> _mouseDownAction;
 
@@ -20,9 +19,13 @@ namespace ECS.Views
             _mouseDownAction = mouseDownAction;
         }
         
-        protected virtual void OnMouseDown()
+        public void OnPointerUp(PointerEventData eventData)
         {
-            //_mouseDownAction?.Invoke(Entity.Get<UidComponent>().Value);
+            _mouseDownAction?.Invoke(Entity.Get<UidComponent>().Value);
+        }
+
+        public void OnPointerDown(PointerEventData eventData)
+        {
         }
         
         // private void Update()
@@ -37,9 +40,5 @@ namespace ECS.Views
         //         }
         //     }
         // }
-        public void OnPointerUp(PointerEventData eventData)
-        {
-            _mouseDownAction?.Invoke(Entity.Get<UidComponent>().Value);
-        }
     }
 }

@@ -28,5 +28,10 @@ namespace UI.GatherWorld
             View.transform.position = position;
             View.transform.LookAt(Camera.main.transform);
         }
+        
+        
+        // from SelectSystem
+        //var ownerPos = _world.GetOwnerEntity(selectedEntity).Get<PositionComponent>().Value;
+        //_signalBus.Fire(new SignalSetPosition(ownerPos));
     }
 }
